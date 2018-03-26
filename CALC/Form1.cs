@@ -223,5 +223,15 @@ namespace CALC
         {
             textBox1.ResetText();
         }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            string exp = "";
+            exp = textBox1.Text;
+            //foreach (var i in exp)
+            //{
+            //    int res = exp[i].GetHashCode();
+            //}
+        }
     }
 }
