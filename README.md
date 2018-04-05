@@ -1,4 +1,4 @@
-#CALC
+# CALC
 
 Simple calculator on C#
 

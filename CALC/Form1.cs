@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ConsoleApp1;
+using CALCULATOR;
 
 namespace CALC
 {
@@ -227,12 +227,13 @@ namespace CALC
 
         private void button16_Click(object sender, EventArgs e)
         {
-            float res = 0;
+            double res = 0;
 
             for (int i = 0; i < textBox1.TextLength; i++)
             {
                 if (textBox1.Text[i].Equals('+') || textBox1.Text[i].Equals('-') || 
-                    textBox1.Text[i].Equals('*') || textBox1.Text[i].Equals('/'))
+                    textBox1.Text[i].Equals('*') || textBox1.Text[i].Equals('/') ||
+                    textBox1.Text[i].Equals('^'))
                 {
                     char sign = textBox1.Text[i];
                     string num1 = "", num2 = "";
@@ -246,8 +247,8 @@ namespace CALC
                         num2 += textBox1.Text[k];
                     }
 
-                    float num_1 = float.Parse(num1);
-                    float num_2 = float.Parse(num2);
+                    double num_1 = double.Parse(num1);
+                    double num_2 = double.Parse(num2);
                     switch (sign)
                     {
                         case '+':
@@ -270,9 +271,44 @@ namespace CALC
                             res = cal.div(ref num_1, ref num_2);
                             break;
                         }
+                        case '^':
+                        {
+                            int num_2_ = int.Parse(num2);
+                            res = cal.powu(ref num_1, ref num_2_);
+                            break;
+                        }
                     }
-                    
                 }
+
+                if (textBox1.Text[i].Equals('!') || textBox1.Text[i].Equals('%'))
+                {
+                    char sign = textBox1.Text[i];
+                    string num1 = "";
+                    for (int j = 0; j < i; j++)
+                    {
+                        num1 += textBox1.Text[j];
+                    }
+
+                    double num_1 = double.Parse(num1);
+
+                    switch (sign)
+                    {
+                        case '!':
+                        {
+                            int num_1_ = int.Parse(num1);
+                            res = cal.fac(ref num_1_);
+                            break;
+                        }
+                        case '%':
+                        {
+                            res = cal.per(ref num_1);
+                            break;
+                        }
+
+                    }
+                }
+
+
             }
 
             textBox1.Text += "=" + res;
