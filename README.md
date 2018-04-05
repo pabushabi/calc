@@ -9,3 +9,6 @@ Now working these functions:
 * "*"
 * "/"
 * ","
+* "%"
+* "!"
+* "^"
