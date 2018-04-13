@@ -23,7 +23,7 @@ namespace CALC
         {
             InitializeComponent();
         }
-        private void button1_Click(object sender, EventArgs e)  //number 1
+        private void button1_Click(object sender, EventArgs e)  //number 1 / (
         {
             if (!extra)
             {
@@ -34,7 +34,7 @@ namespace CALC
                 textBox1.Text += button1.Text;
             }
         }
-        private void button2_Click(object sender, EventArgs e)  //number 2
+        private void button2_Click(object sender, EventArgs e)  //number 2 / )
         {
             if (!extra)
             {
@@ -47,7 +47,7 @@ namespace CALC
 
         }
 
-        private void button3_Click(object sender, EventArgs e)  //number 3
+        private void button3_Click(object sender, EventArgs e)  //number 3 / %
         {
             if (!extra)
             {
@@ -60,7 +60,7 @@ namespace CALC
 
         }
 
-        private void button4_Click(object sender, EventArgs e)  //number 4
+        private void button4_Click(object sender, EventArgs e)  //number 4 / sin
         {
             if (!extra)
             {
@@ -69,11 +69,12 @@ namespace CALC
             else
             {
                 textBox1.Text += button4.Text + "(";
+                sig = true;
             }
 
         }
 
-        private void button5_Click(object sender, EventArgs e)  //number 5
+        private void button5_Click(object sender, EventArgs e)  //number 5 / cos
         {
             if (!extra)
             {
@@ -82,11 +83,12 @@ namespace CALC
             else
             {
                 textBox1.Text += button5.Text + "(";
+                sig = true;
             }
 
         }
 
-        private void button6_Click(object sender, EventArgs e)  //number 6
+        private void button6_Click(object sender, EventArgs e)  //number 6 / tan
         {
             if (!extra)
             {
@@ -95,11 +97,12 @@ namespace CALC
             else
             {
                 textBox1.Text += button6.Text + "(";
+                sig = true;
             }
 
         }
 
-        private void button7_Click(object sender, EventArgs e)  //number 7
+        private void button7_Click(object sender, EventArgs e)  //number 7 / !
         {
             if (!extra)
             {
@@ -112,7 +115,7 @@ namespace CALC
 
         }
 
-        private void button8_Click(object sender, EventArgs e)  //number 8
+        private void button8_Click(object sender, EventArgs e)  //number 8 / ^
         {
             if (!extra)
             {
@@ -125,7 +128,7 @@ namespace CALC
 
         }
 
-        private void button9_Click(object sender, EventArgs e)  //number 9
+        private void button9_Click(object sender, EventArgs e)  //number 9 / sqrt
         {
             if (!extra)
             {
@@ -134,11 +137,12 @@ namespace CALC
             else
             {
                 textBox1.Text += button9.Text + "(";
+                sig = true;
             }
 
         }
 
-        private void button10_Click(object sender, EventArgs e)  //number 0
+        private void button10_Click(object sender, EventArgs e)  //number 0 / ln
         {
             if (!extra)
             {
@@ -146,39 +150,36 @@ namespace CALC
             }
             else
             {
-                textBox1.Text += button10.Text;
+                textBox1.Text += button10.Text + "(";
+                sig = true;
             }
 
         }
 
         private void button12_Click(object sender, EventArgs e)  //operator +
         {
-//            num1 = int.Parse(str);
             if (!sig) textBox1.Text += "+";
             sig = true;
         }
 
         private void button13_Click(object sender, EventArgs e)  //operator -
         {
-//            num1 = int.Parse(str);
             if (!sig) textBox1.Text += "-";
             sig = true;
         }
 
         private void button14_Click(object sender, EventArgs e)  //operator *
         {
-//            num1 = int.Parse(str);
             if (!sig) textBox1.Text += "*";
             sig = true;
         }
 
         private void button15_Click(object sender, EventArgs e)  //operator /
         {
-//            num1 = int.Parse(str);
             if (!sig) textBox1.Text += "/";
             sig = true;
         }
-        private void button11_Click(object sender, EventArgs e)
+        private void button11_Click(object sender, EventArgs e) // , / e
         {
             textBox1.Text += button11.Text;
         }
@@ -188,7 +189,8 @@ namespace CALC
             if (!extra) extra = true;
             else extra = false;
             
-            if (extra) {   
+            if (extra)
+            {   
                 button1.Text = "(";
                 button2.Text = ")";
                 button3.Text = "%";
@@ -244,7 +246,13 @@ namespace CALC
 
                     for (int k = i+1; k < textBox1.TextLength; k++)
                     {
-                        num2 += textBox1.Text[k];
+                        if (textBox1.Text[k].Equals('0') || textBox1.Text[k].Equals('1') || textBox1.Text[k].Equals('2') ||
+                            textBox1.Text[k].Equals('3') || textBox1.Text[k].Equals('4') || textBox1.Text[k].Equals('5') ||
+                            textBox1.Text[k].Equals('6') || textBox1.Text[k].Equals('7') || textBox1.Text[k].Equals('8') ||
+                            textBox1.Text[k].Equals('9'))
+                        {
+                            num2 += textBox1.Text[k];
+                        }
                     }
 
                     double num_1 = double.Parse(num1);
@@ -279,7 +287,7 @@ namespace CALC
                         }
                     }
                 }
-
+                //=====
                 if (textBox1.Text[i].Equals('!') || textBox1.Text[i].Equals('%'))
                 {
                     char sign = textBox1.Text[i];
@@ -307,11 +315,32 @@ namespace CALC
 
                     }
                 }
+                //=====
+                if (textBox1.Text[i].Equals('s') && textBox1.Text[i+1].Equals('i') && textBox1.Text[i+2].Equals('n') &&
+                    textBox1.Text[i+3].Equals('('))
+                {
+                    string num1 = "";
+                    for (int k = i+4; !textBox1.Text[k].Equals(')'); k++)
+                    {
+                        num1 += textBox1.Text[k];
+                    }
 
+                    double num_1 = double.Parse(num1);
+                    res = cal.sinx(ref num_1);
+                }
 
             }
 
             textBox1.Text += "=" + res;
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Oem1) textBox1.Text += "1";
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
         }
 
     }
