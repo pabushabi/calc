@@ -229,11 +229,16 @@ namespace CALC
 
         private void button16_Click(object sender, EventArgs e)
         {
+            Calculating();
+        }
+
+        void Calculating()
+        {
             double res = 0;
 
             for (int i = 0; i < textBox1.TextLength; i++)
             {
-                if (textBox1.Text[i].Equals('+') || textBox1.Text[i].Equals('-') || 
+                if (textBox1.Text[i].Equals('+') || textBox1.Text[i].Equals('-') ||
                     textBox1.Text[i].Equals('*') || textBox1.Text[i].Equals('/') ||
                     textBox1.Text[i].Equals('^'))
                 {
@@ -244,7 +249,7 @@ namespace CALC
                         num1 += textBox1.Text[j];
                     }
 
-                    for (int k = i+1; k < textBox1.TextLength; k++)
+                    for (int k = i + 1; k < textBox1.TextLength; k++)
                     {
                         if (textBox1.Text[k].Equals('0') || textBox1.Text[k].Equals('1') || textBox1.Text[k].Equals('2') ||
                             textBox1.Text[k].Equals('3') || textBox1.Text[k].Equals('4') || textBox1.Text[k].Equals('5') ||
@@ -260,31 +265,31 @@ namespace CALC
                     switch (sign)
                     {
                         case '+':
-                        {
-                            res = cal.add(ref num_1, ref num_2);
-                            break;
-                        }
+                            {
+                                res = cal.add(ref num_1, ref num_2);
+                                break;
+                            }
                         case '-':
-                        {
-                            res = cal.sub(ref num_1, ref num_2);
-                            break;
-                        }
+                            {
+                                res = cal.sub(ref num_1, ref num_2);
+                                break;
+                            }
                         case '*':
-                        {
-                            res = cal.mul(ref num_1, ref num_2);
-                            break;
-                        }
+                            {
+                                res = cal.mul(ref num_1, ref num_2);
+                                break;
+                            }
                         case '/':
-                        {
-                            res = cal.div(ref num_1, ref num_2);
-                            break;
-                        }
+                            {
+                                res = cal.div(ref num_1, ref num_2);
+                                break;
+                            }
                         case '^':
-                        {
-                            int num_2_ = int.Parse(num2);
-                            res = cal.powu(ref num_1, ref num_2_);
-                            break;
-                        }
+                            {
+                                int num_2_ = int.Parse(num2);
+                                res = cal.powu(ref num_1, ref num_2_);
+                                break;
+                            }
                     }
                 }
                 //=====
@@ -302,25 +307,25 @@ namespace CALC
                     switch (sign)
                     {
                         case '!':
-                        {
-                            int num_1_ = int.Parse(num1);
-                            res = cal.fac(ref num_1_);
-                            break;
-                        }
+                            {
+                                int num_1_ = int.Parse(num1);
+                                res = cal.fac(ref num_1_);
+                                break;
+                            }
                         case '%':
-                        {
-                            res = cal.per(ref num_1);
-                            break;
-                        }
+                            {
+                                res = cal.per(ref num_1);
+                                break;
+                            }
 
                     }
                 }
                 //=====
-                if (textBox1.Text[i].Equals('s') && textBox1.Text[i+1].Equals('i') && textBox1.Text[i+2].Equals('n') &&
-                    textBox1.Text[i+3].Equals('('))
+                if (textBox1.Text[i].Equals('s') && textBox1.Text[i + 1].Equals('i') && textBox1.Text[i + 2].Equals('n') &&
+                    textBox1.Text[i + 3].Equals('('))
                 {
                     string num1 = "";
-                    for (int k = i+4; !textBox1.Text[k].Equals(')'); k++)
+                    for (int k = i + 4; !textBox1.Text[k].Equals(')'); k++)
                     {
                         num1 += textBox1.Text[k];
                     }
@@ -329,7 +334,7 @@ namespace CALC
                     double num_1 = double.Parse(num1);
                     res = cal.sinx(ref num_1);
                 }
-                
+
             }
 
             textBox1.Text += "=" + res;
@@ -346,60 +351,88 @@ namespace CALC
 
         void Key(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.D1)
+            if (!(Control.ModifierKeys == Keys.Shift))
             {
-                textBox1.Text += "1";
+                if (e.KeyCode == Keys.D1)
+                {
+                    textBox1.Text += "1";
+                }
+
+                if (e.KeyCode == Keys.D2)
+                {
+                    textBox1.Text += "2";
+                }
+
+                if (e.KeyCode == Keys.D3)
+                {
+                    textBox1.Text += "3";
+                }
+
+                if (e.KeyCode == Keys.D4)
+                {
+                    textBox1.Text += "4";
+                }
+
+                if (e.KeyCode == Keys.D5)
+                {
+                    textBox1.Text += "5";
+                }
+
+                if (e.KeyCode == Keys.D6)
+                {
+                    textBox1.Text += "6";
+                }
+
+                if (e.KeyCode == Keys.D7)
+                {
+                    textBox1.Text += "7";
+                }
+
+                if (e.KeyCode == Keys.D8)
+                {
+                    textBox1.Text += "8";
+                }
+
+                if (e.KeyCode == Keys.D9)
+                {
+                    textBox1.Text += "9";
+                }
+
+                if (e.KeyCode == Keys.D0)
+                {
+                    textBox1.Text += "0";
+                }
             }
 
-            if (e.KeyCode == Keys.D2)
+            if (Control.ModifierKeys == Keys.Shift && e.KeyCode == Keys.D8)
             {
-                textBox1.Text += "2";
+                textBox1.Text += "*";
             }
 
-            if (e.KeyCode == Keys.D3)
+            if (Control.ModifierKeys == Keys.Shift && e.KeyCode == Keys.D6)
             {
-                textBox1.Text += "3";
+                textBox1.Text += "^";
             }
 
-            if (e.KeyCode == Keys.D4)
+            if (Control.ModifierKeys == Keys.Shift && e.KeyCode == Keys.D5)
             {
-                textBox1.Text += "4";
+                textBox1.Text += "%";
             }
 
-            if (e.KeyCode == Keys.D5)
-            {
-                textBox1.Text += "5";
-            }
-
-            if (e.KeyCode == Keys.D6)
-            {
-                textBox1.Text += "6";
-            }
-
-            if (e.KeyCode == Keys.D7)
-            {
-                textBox1.Text += "7";
-            }
-
-            if (e.KeyCode == Keys.D8)
-            {
-                textBox1.Text += "8";
-            }
-
-            if (e.KeyCode == Keys.D9)
-            {
-                textBox1.Text += "9";
-            }
-
-            if (e.KeyCode == Keys.D0)
-            {
-                textBox1.Text += "0";
-            }
+//            if (Control.ModifierKeys == Keys.Shift && e.KeyCode == Keys.Divide)
+//            {
+//                textBox1.Text += "/";
+//            }
 
             if (e.KeyCode == Keys.Back)
             {
                 textBox1.ResetText();
                 sig = false;
+            }
+
+            if (e.KeyCode == Keys.Enter)
+            {
+                Calculating();
             }
 
             if (e.KeyCode == Keys.Escape)
