@@ -61,6 +61,7 @@
             this.button1.Text = "1";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.button1_KeyDown);
             // 
             // button2
             // 
@@ -74,6 +75,7 @@
             this.button2.Text = "2";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.button2_KeyDown);
             // 
             // button3
             // 
@@ -87,6 +89,7 @@
             this.button3.Text = "3";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.button3_KeyDown);
             // 
             // button4
             // 
@@ -100,6 +103,7 @@
             this.button4.Text = "4";
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.button4.KeyDown += new System.Windows.Forms.KeyEventHandler(this.button4_KeyDown);
             // 
             // button5
             // 
@@ -113,6 +117,7 @@
             this.button5.Text = "5";
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.button5.KeyDown += new System.Windows.Forms.KeyEventHandler(this.button5_KeyDown);
             // 
             // button6
             // 
@@ -126,6 +131,7 @@
             this.button6.Text = "6";
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.button6.KeyDown += new System.Windows.Forms.KeyEventHandler(this.button6_KeyDown);
             // 
             // button7
             // 
@@ -139,6 +145,7 @@
             this.button7.Text = "7";
             this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.button7.KeyDown += new System.Windows.Forms.KeyEventHandler(this.button7_KeyDown);
             // 
             // button8
             // 
@@ -152,6 +159,7 @@
             this.button8.Text = "8";
             this.button8.UseVisualStyleBackColor = false;
             this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.button8.KeyDown += new System.Windows.Forms.KeyEventHandler(this.button8_KeyDown);
             // 
             // button9
             // 
@@ -165,6 +173,7 @@
             this.button9.Text = "9";
             this.button9.UseVisualStyleBackColor = false;
             this.button9.Click += new System.EventHandler(this.button9_Click);
+            this.button9.KeyDown += new System.Windows.Forms.KeyEventHandler(this.button9_KeyDown);
             // 
             // button10
             // 
@@ -178,6 +187,7 @@
             this.button10.Text = "0";
             this.button10.UseVisualStyleBackColor = false;
             this.button10.Click += new System.EventHandler(this.button10_Click);
+            this.button10.KeyDown += new System.Windows.Forms.KeyEventHandler(this.button10_KeyDown);
             // 
             // button11
             // 
@@ -191,6 +201,7 @@
             this.button11.Text = ",";
             this.button11.UseVisualStyleBackColor = false;
             this.button11.Click += new System.EventHandler(this.button11_Click);
+            this.button11.KeyDown += new System.Windows.Forms.KeyEventHandler(this.button11_KeyDown);
             // 
             // button12
             // 
@@ -204,6 +215,7 @@
             this.button12.Text = "+";
             this.button12.UseVisualStyleBackColor = false;
             this.button12.Click += new System.EventHandler(this.button12_Click);
+            this.button12.KeyDown += new System.Windows.Forms.KeyEventHandler(this.button12_KeyDown);
             // 
             // button13
             // 
@@ -217,6 +229,7 @@
             this.button13.Text = "-";
             this.button13.UseVisualStyleBackColor = false;
             this.button13.Click += new System.EventHandler(this.button13_Click);
+            this.button13.KeyDown += new System.Windows.Forms.KeyEventHandler(this.button13_KeyDown);
             // 
             // button14
             // 
@@ -230,6 +243,7 @@
             this.button14.Text = "*";
             this.button14.UseVisualStyleBackColor = false;
             this.button14.Click += new System.EventHandler(this.button14_Click);
+            this.button14.KeyDown += new System.Windows.Forms.KeyEventHandler(this.button14_KeyDown);
             // 
             // button15
             // 
@@ -243,6 +257,7 @@
             this.button15.Text = "/";
             this.button15.UseVisualStyleBackColor = false;
             this.button15.Click += new System.EventHandler(this.button15_Click);
+            this.button15.KeyDown += new System.Windows.Forms.KeyEventHandler(this.button15_KeyDown);
             // 
             // button16
             // 
@@ -256,6 +271,7 @@
             this.button16.Text = "=";
             this.button16.UseVisualStyleBackColor = false;
             this.button16.Click += new System.EventHandler(this.button16_Click);
+            this.button16.KeyDown += new System.Windows.Forms.KeyEventHandler(this.button16_KeyDown);
             // 
             // button17
             // 
@@ -269,11 +285,12 @@
             this.button17.Text = "C";
             this.button17.UseVisualStyleBackColor = false;
             this.button17.Click += new System.EventHandler(this.button17_Click);
+            this.button17.KeyDown += new System.Windows.Forms.KeyEventHandler(this.button17_KeyDown);
             // 
             // textBox1
             // 
             this.textBox1.Enabled = false;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox1.Location = new System.Drawing.Point(12, 23);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
@@ -293,6 +310,7 @@
             this.button18.Text = "Extra";
             this.button18.UseVisualStyleBackColor = false;
             this.button18.Click += new System.EventHandler(this.button18_Click);
+            this.button18.KeyDown += new System.Windows.Forms.KeyEventHandler(this.button18_KeyDown);
             // 
             // Form1
             // 

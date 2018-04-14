@@ -325,10 +325,11 @@ namespace CALC
                         num1 += textBox1.Text[k];
                     }
 
+                    num1 += ",0";
                     double num_1 = double.Parse(num1);
                     res = cal.sinx(ref num_1);
                 }
-
+                
             }
 
             textBox1.Text += "=" + res;
@@ -336,12 +337,165 @@ namespace CALC
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Oem1) textBox1.Text += "1";
+            Key(sender, e);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
         }
 
+        void Key(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.D1)
+            {
+                textBox1.Text += "1";
+            }
+
+            if (e.KeyCode == Keys.D2)
+            {
+                textBox1.Text += "2";
+            }
+
+            if (e.KeyCode == Keys.D3)
+            {
+                textBox1.Text += "3";
+            }
+
+            if (e.KeyCode == Keys.D4)
+            {
+                textBox1.Text += "4";
+            }
+
+            if (e.KeyCode == Keys.D5)
+            {
+                textBox1.Text += "5";
+            }
+
+            if (e.KeyCode == Keys.D6)
+            {
+                textBox1.Text += "6";
+            }
+
+            if (e.KeyCode == Keys.D7)
+            {
+                textBox1.Text += "7";
+            }
+
+            if (e.KeyCode == Keys.D8)
+            {
+                textBox1.Text += "8";
+            }
+
+            if (e.KeyCode == Keys.D9)
+            {
+                textBox1.Text += "9";
+            }
+
+            if (e.KeyCode == Keys.D0)
+            {
+                textBox1.Text += "0";
+            }
+
+            if (e.KeyCode == Keys.Back)
+            {
+                textBox1.ResetText();
+                sig = false;
+            }
+
+            if (e.KeyCode == Keys.Escape)
+            {
+                Close();
+            }
+        }
+
+        private void button1_KeyDown(object sender, KeyEventArgs e)
+        {
+            Key(sender, e);
+        }
+
+        private void button2_KeyDown(object sender, KeyEventArgs e)
+        {
+            Key(sender, e);
+        }
+
+        private void button3_KeyDown(object sender, KeyEventArgs e)
+        {
+            Key(sender, e);
+        }
+
+        private void button4_KeyDown(object sender, KeyEventArgs e)
+        {
+            Key(sender, e);
+        }
+
+        private void button5_KeyDown(object sender, KeyEventArgs e)
+        {
+            Key(sender, e);
+        }
+
+        private void button6_KeyDown(object sender, KeyEventArgs e)
+        {
+            Key(sender, e);
+        }
+
+        private void button7_KeyDown(object sender, KeyEventArgs e)
+        {
+            Key(sender, e);
+        }
+
+        private void button8_KeyDown(object sender, KeyEventArgs e)
+        {
+            Key(sender, e);
+        }
+
+        private void button9_KeyDown(object sender, KeyEventArgs e)
+        {
+            Key(sender, e);
+        }
+
+        private void button11_KeyDown(object sender, KeyEventArgs e)
+        {
+            Key(sender, e);
+        }
+
+        private void button10_KeyDown(object sender, KeyEventArgs e)
+        {
+            Key(sender, e);
+        }
+
+        private void button16_KeyDown(object sender, KeyEventArgs e)
+        {
+            Key(sender, e);
+        }
+
+        private void button17_KeyDown(object sender, KeyEventArgs e)
+        {
+            Key(sender, e);
+        }
+
+        private void button15_KeyDown(object sender, KeyEventArgs e)
+        {
+            Key(sender, e);
+        }
+
+        private void button14_KeyDown(object sender, KeyEventArgs e)
+        {
+            Key(sender, e);
+        }
+
+        private void button13_KeyDown(object sender, KeyEventArgs e)
+        {
+            Key(sender, e);
+        }
+
+        private void button12_KeyDown(object sender, KeyEventArgs e)
+        {
+            Key(sender, e);
+        }
+
+        private void button18_KeyDown(object sender, KeyEventArgs e)
+        {
+            Key(sender, e);
+        }
     }
 }
