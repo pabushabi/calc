@@ -13,8 +13,10 @@ Now working these functions:
 * "!"
 * "^"
 * "sin"
+* "cos"
+* "tan" 
 * keyboard input (not all operations)
+* history
 
 Known issues: 
-* sin working strangely
-* enter key too
+* enter key working strangely
