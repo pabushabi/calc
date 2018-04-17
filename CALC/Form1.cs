@@ -245,6 +245,7 @@ namespace CALC
 
             for (int i = 0; i < textBox1.TextLength; i++)
             {
+                //===== Binary operators
                 if (textBox1.Text[i].Equals('+') || textBox1.Text[i].Equals('-') ||
                     textBox1.Text[i].Equals('*') || textBox1.Text[i].Equals('/') ||
                     textBox1.Text[i].Equals('^'))
@@ -299,7 +300,7 @@ namespace CALC
                             }
                     }
                 }
-                //=====
+                //===== Unary operators
                 if (textBox1.Text[i].Equals('!') || textBox1.Text[i].Equals('%'))
                 {
                     char sign = textBox1.Text[i];
@@ -327,7 +328,7 @@ namespace CALC
 
                     }
                 }
-                //=====
+                //===== sin
                 if (textBox1.Text[i].Equals('s') && textBox1.Text[i + 1].Equals('i') && textBox1.Text[i + 2].Equals('n') &&
                     textBox1.Text[i + 3].Equals('('))
                 {
@@ -337,11 +338,35 @@ namespace CALC
                         num1 += textBox1.Text[k];
                     }
 
-                    num1 += ",0";
                     double num_1 = double.Parse(num1);
                     res = cal.sinx(ref num_1);
                 }
+                //===== cos
+                if (textBox1.Text[i].Equals('c') && textBox1.Text[i + 1].Equals('o') && textBox1.Text[i + 2].Equals('s') &&
+                    textBox1.Text[i + 3].Equals('('))
+                {
+                    string num1 = "";
+                    for (int k = i + 4; !textBox1.Text[k].Equals(')'); k++)
+                    {
+                        num1 += textBox1.Text[k];
+                    }
 
+                    double num_1 = double.Parse(num1);
+                    res = cal.cosx(ref num_1);
+                }
+                //===== tg
+                if (textBox1.Text[i].Equals('t') && textBox1.Text[i + 1].Equals('a') && textBox1.Text[i + 2].Equals('n') &&
+                    textBox1.Text[i + 3].Equals('('))
+                {
+                    string num1 = "";
+                    for (int k = i + 4; !textBox1.Text[k].Equals(')'); k++)
+                    {
+                        num1 += textBox1.Text[k];
+                    }
+
+                    double num_1 = double.Parse(num1);
+                    res = cal.tanx(ref num_1);
+                }
             }
 
             textBox1.Text += "=" + res;
@@ -548,7 +573,7 @@ namespace CALC
             {
                 his.Show();
             }
-            else
+            else if (!his.Created)
             {
                 Form2 his = new Form2();
                 his.Show();

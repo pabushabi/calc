@@ -41,14 +41,16 @@ namespace CALCULATOR
 
         public double sinx(ref double x)
         {
-            double res;
+            double res = 0;
+            x *= Math.PI / 180;
             res = Math.Sin(x);
             return res;
         }
 
         public double cosx(ref double x)
         {
-            double res;
+            double res = 0;
+            x *= Math.PI / 180;
             res = Math.Cos(x);
             return res;
         }
@@ -56,6 +58,7 @@ namespace CALCULATOR
         public double tanx(ref double x)
         {
             double res;
+            x *= Math.PI / 180;
             res = Math.Tan(x);
             return res;
         }
