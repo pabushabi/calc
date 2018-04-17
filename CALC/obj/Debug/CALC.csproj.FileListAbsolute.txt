@@ -7,3 +7,4 @@ c:\documents\visual studio 2015\Projects\CALC\CALC\obj\Debug\CALC.Properties.Res
 c:\documents\visual studio 2015\Projects\CALC\CALC\obj\Debug\CALC.csproj.GenerateResource.Cache
 c:\documents\visual studio 2015\Projects\CALC\CALC\obj\Debug\CALC.exe
 c:\documents\visual studio 2015\Projects\CALC\CALC\obj\Debug\CALC.pdb
+c:\documents\visual studio 2015\Projects\CALC\CALC\obj\Debug\CALC1.Form2.resources

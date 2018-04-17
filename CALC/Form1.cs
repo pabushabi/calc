@@ -5,10 +5,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CALC1;
 using CALCULATOR;
 
 namespace CALC
@@ -17,6 +19,9 @@ namespace CALC
     {
         private bool extra = false;
         private bool sig = false;
+        private bool eq = false;
+        Form2 his = new Form2();
+        public string path = @"..\..\his.txt";
 
         calculator cal = new calculator();
         public Form1()
@@ -229,7 +234,9 @@ namespace CALC
 
         private void button16_Click(object sender, EventArgs e)
         {
-            Calculating();
+            if (!eq) Calculating();
+            eq = true;
+            //Calculating();
         }
 
         void Calculating()
@@ -338,6 +345,10 @@ namespace CALC
             }
 
             textBox1.Text += "=" + res;
+            using (StreamWriter sw = new StreamWriter(path, true, System.Text.Encoding.Default))
+            {
+                sw.WriteLine(textBox1.Text);
+            }
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -527,6 +538,24 @@ namespace CALC
         }
 
         private void button18_KeyDown(object sender, KeyEventArgs e)
+        {
+            Key(sender, e);
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            if (!his.IsDisposed)
+            {
+                his.Show();
+            }
+            else
+            {
+                Form2 his = new Form2();
+                his.Show();
+            }
+        }
+
+        private void button19_KeyDown(object sender, KeyEventArgs e)
         {
             Key(sender, e);
         }
