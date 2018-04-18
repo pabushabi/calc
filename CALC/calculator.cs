@@ -10,6 +10,8 @@ namespace CALCULATOR
 
     class calculator
     {
+        public double pi = Math.PI;
+        public double e = Math.E;
 
         public double sub(ref double x, ref double y)
         {

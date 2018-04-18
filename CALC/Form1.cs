@@ -49,7 +49,6 @@ namespace CALC
             {
                 textBox1.Text += button2.Text;
             }
-
         }
 
         private void button3_Click(object sender, EventArgs e)  //number 3 / %
@@ -62,7 +61,6 @@ namespace CALC
             {
                 textBox1.Text += button3.Text;
             }
-
         }
 
         private void button4_Click(object sender, EventArgs e)  //number 4 / sin
@@ -76,7 +74,6 @@ namespace CALC
                 textBox1.Text += button4.Text + "(";
                 sig = true;
             }
-
         }
 
         private void button5_Click(object sender, EventArgs e)  //number 5 / cos
@@ -90,7 +87,6 @@ namespace CALC
                 textBox1.Text += button5.Text + "(";
                 sig = true;
             }
-
         }
 
         private void button6_Click(object sender, EventArgs e)  //number 6 / tan
@@ -104,7 +100,6 @@ namespace CALC
                 textBox1.Text += button6.Text + "(";
                 sig = true;
             }
-
         }
 
         private void button7_Click(object sender, EventArgs e)  //number 7 / !
@@ -117,7 +112,6 @@ namespace CALC
             {
                 textBox1.Text += button7.Text;
             }
-
         }
 
         private void button8_Click(object sender, EventArgs e)  //number 8 / ^
@@ -130,7 +124,6 @@ namespace CALC
             {
                 textBox1.Text += button8.Text;
             }
-
         }
 
         private void button9_Click(object sender, EventArgs e)  //number 9 / sqrt
@@ -144,7 +137,6 @@ namespace CALC
                 textBox1.Text += button9.Text + "(";
                 sig = true;
             }
-
         }
 
         private void button10_Click(object sender, EventArgs e)  //number 0 / ln
@@ -158,7 +150,6 @@ namespace CALC
                 textBox1.Text += button10.Text + "(";
                 sig = true;
             }
-
         }
 
         private void button12_Click(object sender, EventArgs e)  //operator +
@@ -226,17 +217,20 @@ namespace CALC
             }
         }
 
-        private void button17_Click(object sender, EventArgs e)
+        private void button17_Click(object sender, EventArgs e) //C
         {
             textBox1.ResetText();
             sig = false;
+            eq = false;
         }
 
         private void button16_Click(object sender, EventArgs e)
         {
-            if (!eq) Calculating();
-            eq = true;
-            //Calculating();
+            if (!eq)
+            {
+                Calculating();
+                eq = true;
+            }
         }
 
         void Calculating()
@@ -252,24 +246,62 @@ namespace CALC
                 {
                     char sign = textBox1.Text[i];
                     string num1 = "", num2 = "";
+                    double tmp1 = 0, tmp2 = 0;
                     for (int j = 0; j < i; j++)
                     {
-                        num1 += textBox1.Text[j];
-                    }
-
-                    for (int k = i + 1; k < textBox1.TextLength; k++)
-                    {
-                        if (textBox1.Text[k].Equals('0') || textBox1.Text[k].Equals('1') || textBox1.Text[k].Equals('2') ||
-                            textBox1.Text[k].Equals('3') || textBox1.Text[k].Equals('4') || textBox1.Text[k].Equals('5') ||
-                            textBox1.Text[k].Equals('6') || textBox1.Text[k].Equals('7') || textBox1.Text[k].Equals('8') ||
-                            textBox1.Text[k].Equals('9'))
+                        if (textBox1.Text[j].Equals('0') || textBox1.Text[j].Equals('1') ||
+                            textBox1.Text[j].Equals('2') || textBox1.Text[j].Equals('3') ||
+                            textBox1.Text[j].Equals('4') || textBox1.Text[j].Equals('5') ||
+                            textBox1.Text[j].Equals('6') || textBox1.Text[j].Equals('7') ||
+                            textBox1.Text[j].Equals('8') || textBox1.Text[j].Equals('9'))
                         {
-                            num2 += textBox1.Text[k];
+                            num1 += textBox1.Text[j];
+                        }
+
+                        if (textBox1.Text[j].Equals('e'))
+                        {
+                            tmp1 = cal.e;
                         }
                     }
 
-                    double num_1 = double.Parse(num1);
-                    double num_2 = double.Parse(num2);
+                    
+                    for (int k = i + 1; k < textBox1.TextLength; k++)
+                    {
+                        if (textBox1.Text[k].Equals('0') || textBox1.Text[k].Equals('1') || 
+                            textBox1.Text[k].Equals('2') || textBox1.Text[k].Equals('3') || 
+                            textBox1.Text[k].Equals('4') || textBox1.Text[k].Equals('5') ||
+                            textBox1.Text[k].Equals('6') || textBox1.Text[k].Equals('7') || 
+                            textBox1.Text[k].Equals('8') || textBox1.Text[k].Equals('9'))
+                        {
+                            num2 += textBox1.Text[k];
+                        }
+
+                        if (textBox1.Text[k].Equals('e'))
+                        {
+                            tmp2 = cal.e;
+                        }
+                    }
+
+                    double num_1 = 0;
+                    double num_2 = 0;
+                    if (tmp1 != 0)
+                    {
+                        num_1 = tmp1;
+                    }
+                    else
+                    {
+                        num_1 = double.Parse(num1);
+                    }
+
+                    if (tmp2 != 0)
+                    {
+                        num_2 = tmp2;
+                    }
+                    else
+                    {
+                        num_2 = double.Parse(num2);
+                    }
+
                     switch (sign)
                     {
                         case '+':
@@ -299,6 +331,7 @@ namespace CALC
                                 break;
                             }
                     }
+                    break;
                 }
                 //===== Unary operators
                 if (textBox1.Text[i].Equals('!') || textBox1.Text[i].Equals('%'))
@@ -325,12 +358,12 @@ namespace CALC
                                 res = cal.per(ref num_1);
                                 break;
                             }
-
                     }
+                    break;
                 }
                 //===== sin
-                if (textBox1.Text[i].Equals('s') && textBox1.Text[i + 1].Equals('i') && textBox1.Text[i + 2].Equals('n') &&
-                    textBox1.Text[i + 3].Equals('('))
+                if (textBox1.Text[i].Equals('s') && textBox1.Text[i + 1].Equals('i') &&
+                    textBox1.Text[i + 2].Equals('n') && textBox1.Text[i + 3].Equals('('))
                 {
                     string num1 = "";
                     for (int k = i + 4; !textBox1.Text[k].Equals(')'); k++)
@@ -340,10 +373,12 @@ namespace CALC
 
                     double num_1 = double.Parse(num1);
                     res = cal.sinx(ref num_1);
+                    break;
                 }
+
                 //===== cos
-                if (textBox1.Text[i].Equals('c') && textBox1.Text[i + 1].Equals('o') && textBox1.Text[i + 2].Equals('s') &&
-                    textBox1.Text[i + 3].Equals('('))
+                if (textBox1.Text[i].Equals('c') && textBox1.Text[i + 1].Equals('o') &&
+                    textBox1.Text[i + 2].Equals('s') && textBox1.Text[i + 3].Equals('('))
                 {
                     string num1 = "";
                     for (int k = i + 4; !textBox1.Text[k].Equals(')'); k++)
@@ -353,10 +388,12 @@ namespace CALC
 
                     double num_1 = double.Parse(num1);
                     res = cal.cosx(ref num_1);
+                    break;
                 }
+
                 //===== tg
-                if (textBox1.Text[i].Equals('t') && textBox1.Text[i + 1].Equals('a') && textBox1.Text[i + 2].Equals('n') &&
-                    textBox1.Text[i + 3].Equals('('))
+                if (textBox1.Text[i].Equals('t') && textBox1.Text[i + 1].Equals('a') &&
+                    textBox1.Text[i + 2].Equals('n') && textBox1.Text[i + 3].Equals('('))
                 {
                     string num1 = "";
                     for (int k = i + 4; !textBox1.Text[k].Equals(')'); k++)
@@ -366,10 +403,52 @@ namespace CALC
 
                     double num_1 = double.Parse(num1);
                     res = cal.tanx(ref num_1);
+                    break;
                 }
+
+                //===== sqrt
+                if (textBox1.Text[i].Equals('s') && textBox1.Text[i + 1].Equals('q') &&
+                    textBox1.Text[i + 2].Equals('r') && textBox1.Text[i + 3].Equals('t') && 
+                    textBox1.Text[i + 4].Equals('('))
+                {
+                    string num1 = "";
+                    for (int k = i + 5; !textBox1.Text[k].Equals(')'); k++)
+                    {
+                        num1 += textBox1.Text[k];
+                    }
+
+                    double num_1 = double.Parse(num1);
+                    res = cal.sqrtu(ref num_1);
+                    break;
+                }
+
+                //=====ln
+                if (textBox1.Text[i].Equals('l') && textBox1.Text[i + 1].Equals('n') &&
+                    textBox1.Text[i + 2].Equals('('))
+                {
+                    string num1 = "";
+                    for (int k = i + 3; !textBox1.Text[k].Equals(')'); k++)
+                    {
+                        num1 += textBox1.Text[k];
+                    }
+
+                    double num_1 = double.Parse(num1);
+                    res = cal.ln(ref num_1);
+                    break;
+                }
+
+                //=====e
+                //if (textBox1.Text[0].Equals('e'))
+                //{
+                //    res = cal.e;
+                //    break;
+                //}
+
             }
 
+            res = Math.Round(res, 4);
             textBox1.Text += "=" + res;
+            //textBox2.Text += res;
             using (StreamWriter sw = new StreamWriter(path, true, System.Text.Encoding.Default))
             {
                 sw.WriteLine(textBox1.Text);

@@ -324,7 +324,6 @@
             this.button19.Text = "History";
             this.button19.UseVisualStyleBackColor = false;
             this.button19.Click += new System.EventHandler(this.button19_Click);
-            this.button19.KeyDown += new System.Windows.Forms.KeyEventHandler(this.button19_KeyDown);
             // 
             // Form1
             // 
