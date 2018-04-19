@@ -217,7 +217,7 @@ namespace CALC
             }
         }
 
-        private void button17_Click(object sender, EventArgs e) //C
+        private void button17_Click(object sender, EventArgs e) // C
         {
             textBox1.ResetText();
             sig = false;
@@ -249,12 +249,7 @@ namespace CALC
                     double tmp1 = 0, tmp2 = 0;
                     for (int j = 0; j < i; j++)
                     {
-                        if (textBox1.Text[j].Equals('0') || textBox1.Text[j].Equals('1') ||
-                            textBox1.Text[j].Equals('2') || textBox1.Text[j].Equals('3') ||
-                            textBox1.Text[j].Equals('4') || textBox1.Text[j].Equals('5') ||
-                            textBox1.Text[j].Equals('6') || textBox1.Text[j].Equals('7') ||
-                            textBox1.Text[j].Equals('8') || textBox1.Text[j].Equals('9') ||
-                            textBox1.Text[j].Equals(','))
+                        if (isNum(ref j))
                         {
                             num1 += textBox1.Text[j];
                         }
@@ -268,12 +263,7 @@ namespace CALC
                     
                     for (int k = i + 1; k < textBox1.TextLength; k++)
                     {
-                        if (textBox1.Text[k].Equals('0') || textBox1.Text[k].Equals('1') || 
-                            textBox1.Text[k].Equals('2') || textBox1.Text[k].Equals('3') || 
-                            textBox1.Text[k].Equals('4') || textBox1.Text[k].Equals('5') ||
-                            textBox1.Text[k].Equals('6') || textBox1.Text[k].Equals('7') || 
-                            textBox1.Text[k].Equals('8') || textBox1.Text[k].Equals('9') ||
-                            textBox1.Text[k].Equals(','))
+                        if (isNum(ref k))
                         {
                             num2 += textBox1.Text[k];
                         }
@@ -328,8 +318,8 @@ namespace CALC
                             }
                         case '^':
                             {
-                                double num_2_ = double.Parse(num2);
-                                res = cal.powu(ref num_1, ref num_2_);
+                                //double num_2_ = double.Parse(num2);
+                                res = cal.powu(ref num_1, ref num_2);
                                 break;
                             }
                     }
@@ -342,7 +332,10 @@ namespace CALC
                     string num1 = "";
                     for (int j = 0; j < i; j++)
                     {
-                        num1 += textBox1.Text[j];
+                        if (isNum(ref j))
+                        {
+                            num1 += textBox1.Text[j];
+                        }
                     }
 
                     double num_1 = double.Parse(num1);
@@ -370,7 +363,10 @@ namespace CALC
                     string num1 = "";
                     for (int k = i + 4; !textBox1.Text[k].Equals(')'); k++)
                     {
-                        num1 += textBox1.Text[k];
+                        if (isNum(ref k))
+                        {
+                            num1 += textBox1.Text[k];
+                        }
                     }
 
                     double num_1 = double.Parse(num1);
@@ -385,7 +381,10 @@ namespace CALC
                     string num1 = "";
                     for (int k = i + 4; !textBox1.Text[k].Equals(')'); k++)
                     {
-                        num1 += textBox1.Text[k];
+                        if (isNum(ref k))
+                        {
+                            num1 += textBox1.Text[k];
+                        }
                     }
 
                     double num_1 = double.Parse(num1);
@@ -400,7 +399,10 @@ namespace CALC
                     string num1 = "";
                     for (int k = i + 4; !textBox1.Text[k].Equals(')'); k++)
                     {
-                        num1 += textBox1.Text[k];
+                        if (isNum(ref k))
+                        {
+                            num1 += textBox1.Text[k];
+                        }
                     }
 
                     double num_1 = double.Parse(num1);
@@ -416,7 +418,11 @@ namespace CALC
                     string num1 = "";
                     for (int k = i + 5; !textBox1.Text[k].Equals(')'); k++)
                     {
-                        num1 += textBox1.Text[k];
+                        if (isNum(ref k))
+                        {
+                            num1 += textBox1.Text[k];
+                        }
+                        
                     }
 
                     double num_1 = double.Parse(num1);
@@ -431,7 +437,10 @@ namespace CALC
                     string num1 = "";
                     for (int k = i + 3; !textBox1.Text[k].Equals(')'); k++)
                     {
-                        num1 += textBox1.Text[k];
+                        if (isNum(ref k))
+                        {
+                            num1 += textBox1.Text[k];
+                        }
                     }
 
                     double num_1 = double.Parse(num1);
@@ -543,13 +552,15 @@ namespace CALC
 
             if (e.KeyCode == Keys.Back)
             {
-                textBox1.ResetText();
-                sig = false;
+                //textBox1.ResetText();
+                //sig = false;
+                button17_Click(sender, e);
             }
 
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Tab)
             {
-                Calculating();
+                //Calculating();
+                button16_Click(sender, e);
             }
 
             if (e.KeyCode == Keys.Escape)
@@ -557,9 +568,9 @@ namespace CALC
                 Close();
             }
 
-            if (e.KeyCode == Keys.Decimal && Control.ModifierKeys == Keys.Shift)
+            if (e.KeyCode == Keys.Subtract)
             {
-                textBox1.Text += ",";
+                textBox1.Text += "-";
             }
         }
 
@@ -669,6 +680,21 @@ namespace CALC
         private void button19_KeyDown(object sender, KeyEventArgs e)
         {
             Key(sender, e);
+        }
+
+        private bool isNum(ref int j)
+        {
+            if (textBox1.Text[j].Equals('0') || textBox1.Text[j].Equals('1') ||
+                textBox1.Text[j].Equals('2') || textBox1.Text[j].Equals('3') ||
+                textBox1.Text[j].Equals('4') || textBox1.Text[j].Equals('5') ||
+                textBox1.Text[j].Equals('6') || textBox1.Text[j].Equals('7') ||
+                textBox1.Text[j].Equals('8') || textBox1.Text[j].Equals('9') ||
+                textBox1.Text[j].Equals(','))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }
