@@ -22,6 +22,7 @@ namespace CALC
         private bool eq = false;
         Form2 his = new Form2();
         public string path = @"..\..\his.txt";
+        private string clpbrd = "";
 
         calculator cal = new calculator();
         public Form1()
@@ -458,6 +459,8 @@ namespace CALC
             }
 
             res = Math.Round(res, 4);
+            clpbrd = "";
+            clpbrd += res;
             textBox1.Text += "=" + res;
             //textBox2.Text += res;
             using (StreamWriter sw = new StreamWriter(path, true, System.Text.Encoding.Default))
@@ -477,7 +480,7 @@ namespace CALC
 
         void Key(object sender, KeyEventArgs e)
         {
-            if (!(Control.ModifierKeys == Keys.Shift))
+            if (!(Control.ModifierKeys == Keys.Shift || Control.ModifierKeys == Keys.Control))
             {
                 if (e.KeyCode == Keys.D1)
                 {
@@ -528,6 +531,31 @@ namespace CALC
                 {
                     textBox1.Text += "0";
                 }
+
+                if (e.KeyCode == Keys.C)
+                {
+                    textBox1.Text += "cos(";
+                }
+
+                if (e.KeyCode == Keys.S)
+                {
+                    textBox1.Text += "sin(";
+                }
+
+                if (e.KeyCode == Keys.T)
+                {
+                    textBox1.Text += "tan(";
+                }
+
+                if (e.KeyCode == Keys.Q)
+                {
+                    textBox1.Text += "sqrt(";
+                }
+
+                if (e.KeyCode == Keys.L)
+                {
+                    textBox1.Text += "ln(";
+                }
             }
 
             if (Control.ModifierKeys == Keys.Shift && e.KeyCode == Keys.D8)
@@ -543,6 +571,26 @@ namespace CALC
             if (Control.ModifierKeys == Keys.Shift && e.KeyCode == Keys.D5)
             {
                 textBox1.Text += "%";
+            }
+
+            if (Control.ModifierKeys == Keys.Shift && e.KeyCode == Keys.D9)
+            {
+                textBox1.Text += "(";
+            }
+
+            if (Control.ModifierKeys == Keys.Shift && e.KeyCode == Keys.D0)
+            {
+                textBox1.Text += ")";
+            }
+
+            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.C)
+            {
+                Clipboard.SetText(clpbrd);
+            }
+
+            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.V)
+            {
+                textBox1.Text += Clipboard.GetText();
             }
 
 //            if (Control.ModifierKeys == Keys.Shift && e.KeyCode == Keys.Divide)

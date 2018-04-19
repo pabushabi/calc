@@ -17,8 +17,23 @@ Now working these functions:
 * "tan" 
 * "ln"
 * "e"
-* keyboard input (not all operations)
+* keyboard input (not all operations):
+	* "0-9" - digital keys
+	* "*" - Shift + 8
+	* "^" - Shift + 6
+	* "%" - Shift + 5
+	* "(" - Shift + 9
+	* ")" - Shift + 0
+	* "cos" - c
+	* "sin" - s
+	* "tan" - t
+	* "ln" - l
+	* "sqrt" - q
+	* copy result to clipboard - Ctrl + c
+	* paste from clipboard - Ctrl + v
+	* calculate the result - tab
+	* erase - backspace
 * history
 
 Known issues: 
-* enter key working strangely
+* history displays not in column
