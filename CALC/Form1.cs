@@ -212,7 +212,7 @@ namespace CALC
                 button8.Text = "8";
                 button9.Text = "9";
                 button10.Text = "0";
-                button11.Text = ".";
+                button11.Text = ",";
                 button18.BackColor = Color.DarkGray;
             }
         }
@@ -253,7 +253,8 @@ namespace CALC
                             textBox1.Text[j].Equals('2') || textBox1.Text[j].Equals('3') ||
                             textBox1.Text[j].Equals('4') || textBox1.Text[j].Equals('5') ||
                             textBox1.Text[j].Equals('6') || textBox1.Text[j].Equals('7') ||
-                            textBox1.Text[j].Equals('8') || textBox1.Text[j].Equals('9'))
+                            textBox1.Text[j].Equals('8') || textBox1.Text[j].Equals('9') ||
+                            textBox1.Text[j].Equals(','))
                         {
                             num1 += textBox1.Text[j];
                         }
@@ -271,7 +272,8 @@ namespace CALC
                             textBox1.Text[k].Equals('2') || textBox1.Text[k].Equals('3') || 
                             textBox1.Text[k].Equals('4') || textBox1.Text[k].Equals('5') ||
                             textBox1.Text[k].Equals('6') || textBox1.Text[k].Equals('7') || 
-                            textBox1.Text[k].Equals('8') || textBox1.Text[k].Equals('9'))
+                            textBox1.Text[k].Equals('8') || textBox1.Text[k].Equals('9') ||
+                            textBox1.Text[k].Equals(','))
                         {
                             num2 += textBox1.Text[k];
                         }
@@ -326,7 +328,7 @@ namespace CALC
                             }
                         case '^':
                             {
-                                int num_2_ = int.Parse(num2);
+                                double num_2_ = double.Parse(num2);
                                 res = cal.powu(ref num_1, ref num_2_);
                                 break;
                             }
@@ -553,6 +555,11 @@ namespace CALC
             if (e.KeyCode == Keys.Escape)
             {
                 Close();
+            }
+
+            if (e.KeyCode == Keys.Decimal && Control.ModifierKeys == Keys.Shift)
+            {
+                textBox1.Text += ",";
             }
         }
 

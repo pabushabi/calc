@@ -89,7 +89,7 @@ namespace CALCULATOR
             return res;
         }
 
-        public double powu(ref double x, ref int y)
+        public double powu(ref double x, ref double y)
         {
             double res;
             res = Math.Pow(x, y);
