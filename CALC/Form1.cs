@@ -556,6 +556,11 @@ namespace CALC
                 {
                     textBox1.Text += "ln(";
                 }
+
+                if (e.KeyCode == Keys.H)
+                {
+                    button19_Click(sender, e);
+                }
             }
 
             if (Control.ModifierKeys == Keys.Shift && e.KeyCode == Keys.D8)

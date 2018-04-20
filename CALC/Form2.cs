@@ -49,5 +49,12 @@ namespace CALC1
                 }
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            File.Create(path);
+            //File.
+            textBox1.ResetText();
+        }
     }
 }
