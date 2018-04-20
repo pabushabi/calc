@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CALC1;
 using CALCULATOR;
@@ -462,7 +454,6 @@ namespace CALC
             clpbrd = "";
             clpbrd += res;
             textBox1.Text += "=" + res;
-            //textBox2.Text += res;
             using (StreamWriter sw = new StreamWriter(path, true, System.Text.Encoding.Default))
             {
                 sw.WriteLine(textBox1.Text);
@@ -605,14 +596,11 @@ namespace CALC
 
             if (e.KeyCode == Keys.Back)
             {
-                //textBox1.ResetText();
-                //sig = false;
                 button17_Click(sender, e);
             }
 
             if (e.KeyCode == Keys.Tab)
             {
-                //Calculating();
                 button16_Click(sender, e);
             }
 
@@ -627,96 +615,6 @@ namespace CALC
             }
         }
 
-        private void button1_KeyDown(object sender, KeyEventArgs e)
-        {
-            Key(sender, e);
-        }
-
-        private void button2_KeyDown(object sender, KeyEventArgs e)
-        {
-            Key(sender, e);
-        }
-
-        private void button3_KeyDown(object sender, KeyEventArgs e)
-        {
-            Key(sender, e);
-        }
-
-        private void button4_KeyDown(object sender, KeyEventArgs e)
-        {
-            Key(sender, e);
-        }
-
-        private void button5_KeyDown(object sender, KeyEventArgs e)
-        {
-            Key(sender, e);
-        }
-
-        private void button6_KeyDown(object sender, KeyEventArgs e)
-        {
-            Key(sender, e);
-        }
-
-        private void button7_KeyDown(object sender, KeyEventArgs e)
-        {
-            Key(sender, e);
-        }
-
-        private void button8_KeyDown(object sender, KeyEventArgs e)
-        {
-            Key(sender, e);
-        }
-
-        private void button9_KeyDown(object sender, KeyEventArgs e)
-        {
-            Key(sender, e);
-        }
-
-        private void button11_KeyDown(object sender, KeyEventArgs e)
-        {
-            Key(sender, e);
-        }
-
-        private void button10_KeyDown(object sender, KeyEventArgs e)
-        {
-            Key(sender, e);
-        }
-
-        private void button16_KeyDown(object sender, KeyEventArgs e)
-        {
-            Key(sender, e);
-        }
-
-        private void button17_KeyDown(object sender, KeyEventArgs e)
-        {
-            Key(sender, e);
-        }
-
-        private void button15_KeyDown(object sender, KeyEventArgs e)
-        {
-            Key(sender, e);
-        }
-
-        private void button14_KeyDown(object sender, KeyEventArgs e)
-        {
-            Key(sender, e);
-        }
-
-        private void button13_KeyDown(object sender, KeyEventArgs e)
-        {
-            Key(sender, e);
-        }
-
-        private void button12_KeyDown(object sender, KeyEventArgs e)
-        {
-            Key(sender, e);
-        }
-
-        private void button18_KeyDown(object sender, KeyEventArgs e)
-        {
-            Key(sender, e);
-        }
-
         private void button19_Click(object sender, EventArgs e)
         {
             if (!his.IsDisposed)
@@ -728,11 +626,6 @@ namespace CALC
                 Form2 his = new Form2();
                 his.Show();
             }
-        }
-
-        private void button19_KeyDown(object sender, KeyEventArgs e)
-        {
-            Key(sender, e);
         }
 
         private bool isNum(ref int j)

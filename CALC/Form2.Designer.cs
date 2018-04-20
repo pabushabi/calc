@@ -41,6 +41,8 @@
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox1.Size = new System.Drawing.Size(301, 393);
             this.textBox1.TabIndex = 0;
+            this.textBox1.TabStop = false;
+            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form2_KeyDown);
             // 
             // button1
             // 
@@ -49,9 +51,11 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(150, 29);
             this.button1.TabIndex = 1;
+            this.button1.TabStop = false;
             this.button1.Text = "Reload";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form2_KeyDown);
             // 
             // button2
             // 
@@ -60,9 +64,11 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(150, 29);
             this.button2.TabIndex = 2;
+            this.button2.TabStop = false;
             this.button2.Text = "Clear";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form2_KeyDown);
             // 
             // Form2
             // 
@@ -78,6 +84,7 @@
             this.ShowIcon = false;
             this.Text = "Hitory";
             this.Load += new System.EventHandler(this.Form2_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form2_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
