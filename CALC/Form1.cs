@@ -12,11 +12,11 @@ namespace CALC
         private bool extra = false;
         private bool sig = false;
         private bool eq = false;
-        Form2 his = new Form2();
+        readonly Form2 his = new Form2();
         public string path = @"..\..\his.txt";
         private string clpbrd = "";
 
-        calculator cal = new calculator();
+        readonly calculator cal = new calculator();
         public Form1()
         {
             InitializeComponent();
@@ -64,7 +64,7 @@ namespace CALC
             }
             else
             {
-                textBox1.Text += button4.Text + "(";
+                textBox1.Text += button4.Text + @"(";
                 sig = true;
             }
         }
@@ -77,7 +77,7 @@ namespace CALC
             }
             else
             {
-                textBox1.Text += button5.Text + "(";
+                textBox1.Text += button5.Text + @"(";
                 sig = true;
             }
         }
@@ -90,7 +90,7 @@ namespace CALC
             }
             else
             {
-                textBox1.Text += button6.Text + "(";
+                textBox1.Text += button6.Text + @"(";
                 sig = true;
             }
         }
@@ -127,7 +127,7 @@ namespace CALC
             }
             else
             {
-                textBox1.Text += button9.Text + "(";
+                textBox1.Text += button9.Text + @"(";
                 sig = true;
             }
         }
@@ -140,32 +140,32 @@ namespace CALC
             }
             else
             {
-                textBox1.Text += button10.Text + "(";
+                textBox1.Text += button10.Text + @"(";
                 sig = true;
             }
         }
 
         private void button12_Click(object sender, EventArgs e)  //operator +
         {
-            if (!sig) textBox1.Text += "+";
+            if (!sig) textBox1.Text += @"+";
             sig = true;
         }
 
         private void button13_Click(object sender, EventArgs e)  //operator -
         {
-            if (!sig) textBox1.Text += "-";
+            if (!sig) textBox1.Text += @"-";
             sig = true;
         }
 
         private void button14_Click(object sender, EventArgs e)  //operator *
         {
-            if (!sig) textBox1.Text += "*";
+            if (!sig) textBox1.Text += @"*";
             sig = true;
         }
 
         private void button15_Click(object sender, EventArgs e)  //operator /
         {
-            if (!sig) textBox1.Text += "/";
+            if (!sig) textBox1.Text += @"/";
             sig = true;
         }
         private void button11_Click(object sender, EventArgs e) // , / e
@@ -175,37 +175,36 @@ namespace CALC
 
         private void button18_Click(object sender, EventArgs e)
         {
-            if (!extra) extra = true;
-            else extra = false;
+            extra = !extra;
             
             if (extra)
             {   
-                button1.Text = "(";
-                button2.Text = ")";
-                button3.Text = "%";
-                button4.Text = "sin";
-                button5.Text = "cos";
-                button6.Text = "tan";
-                button7.Text = "!";
-                button8.Text = "^";
-                button9.Text = "sqrt";
-                button10.Text = "ln";
-                button11.Text = "e";
+                button1.Text = @"(";
+                button2.Text = @")";
+                button3.Text = @"%";
+                button4.Text = @"sin";
+                button5.Text = @"cos";
+                button6.Text = @"tan";
+                button7.Text = @"!";
+                button8.Text = @"^";
+                button9.Text = @"sqrt";
+                button10.Text = @"ln";
+                button11.Text = @"e";
                 button18.BackColor = Color.Gray;
             }
             if (!extra)
             {
-                button1.Text = "1";
-                button2.Text = "2";
-                button3.Text = "3";
-                button4.Text = "4";
-                button5.Text = "5";
-                button6.Text = "6";
-                button7.Text = "7";
-                button8.Text = "8";
-                button9.Text = "9";
-                button10.Text = "0";
-                button11.Text = ",";
+                button1.Text = @"1";
+                button2.Text = @"2";
+                button3.Text = @"3";
+                button4.Text = @"4";
+                button5.Text = @"5";
+                button6.Text = @"6";
+                button7.Text = @"7";
+                button8.Text = @"8";
+                button9.Text = @"9";
+                button10.Text = @"0";
+                button11.Text = @",";
                 button18.BackColor = Color.DarkGray;
             }
         }
@@ -269,23 +268,9 @@ namespace CALC
 
                     double num_1 = 0;
                     double num_2 = 0;
-                    if (tmp1 != 0)
-                    {
-                        num_1 = tmp1;
-                    }
-                    else
-                    {
-                        num_1 = double.Parse(num1);
-                    }
+                    num_1 = tmp1 != 0 ? tmp1 : double.Parse(num1);
 
-                    if (tmp2 != 0)
-                    {
-                        num_2 = tmp2;
-                    }
-                    else
-                    {
-                        num_2 = double.Parse(num2);
-                    }
+                    num_2 = tmp2 != 0 ? tmp2 : double.Parse(num2);
 
                     switch (sign)
                     {
@@ -471,147 +456,107 @@ namespace CALC
 
         void Key(object sender, KeyEventArgs e)
         {
-            if (!(Control.ModifierKeys == Keys.Shift || Control.ModifierKeys == Keys.Control))
+            if (!(ModifierKeys == Keys.Shift || ModifierKeys == Keys.Control))
             {
-                if (e.KeyCode == Keys.D1)
+                switch (e.KeyCode)
                 {
-                    textBox1.Text += "1";
-                }
-
-                if (e.KeyCode == Keys.D2)
-                {
-                    textBox1.Text += "2";
-                }
-
-                if (e.KeyCode == Keys.D3)
-                {
-                    textBox1.Text += "3";
-                }
-
-                if (e.KeyCode == Keys.D4)
-                {
-                    textBox1.Text += "4";
-                }
-
-                if (e.KeyCode == Keys.D5)
-                {
-                    textBox1.Text += "5";
-                }
-
-                if (e.KeyCode == Keys.D6)
-                {
-                    textBox1.Text += "6";
-                }
-
-                if (e.KeyCode == Keys.D7)
-                {
-                    textBox1.Text += "7";
-                }
-
-                if (e.KeyCode == Keys.D8)
-                {
-                    textBox1.Text += "8";
-                }
-
-                if (e.KeyCode == Keys.D9)
-                {
-                    textBox1.Text += "9";
-                }
-
-                if (e.KeyCode == Keys.D0)
-                {
-                    textBox1.Text += "0";
-                }
-
-                if (e.KeyCode == Keys.C)
-                {
-                    textBox1.Text += "cos(";
-                }
-
-                if (e.KeyCode == Keys.S)
-                {
-                    textBox1.Text += "sin(";
-                }
-
-                if (e.KeyCode == Keys.T)
-                {
-                    textBox1.Text += "tan(";
-                }
-
-                if (e.KeyCode == Keys.Q)
-                {
-                    textBox1.Text += "sqrt(";
-                }
-
-                if (e.KeyCode == Keys.L)
-                {
-                    textBox1.Text += "ln(";
-                }
-
-                if (e.KeyCode == Keys.H)
-                {
-                    button19_Click(sender, e);
+                    case Keys.D1:
+                        textBox1.Text += @"1";
+                        break;
+                    case Keys.D2:
+                        textBox1.Text += @"2";
+                        break;
+                    case Keys.D3:
+                        textBox1.Text += @"3";
+                        break;
+                    case Keys.D4:
+                        textBox1.Text += @"4";
+                        break;
+                    case Keys.D5:
+                        textBox1.Text += @"5";
+                        break;
+                    case Keys.D6:
+                        textBox1.Text += @"6";
+                        break;
+                    case Keys.D7:
+                        textBox1.Text += @"7";
+                        break;
+                    case Keys.D8:
+                        textBox1.Text += @"8";
+                        break;
+                    case Keys.D9:
+                        textBox1.Text += @"9";
+                        break;
+                    case Keys.D0:
+                        textBox1.Text += @"0";
+                        break;
+                    case Keys.C:
+                        textBox1.Text += @"cos(";
+                        break;
+                    case Keys.S:
+                        textBox1.Text += @"sin(";
+                        break;
+                    case Keys.T:
+                        textBox1.Text += @"tan(";
+                        break;
+                    case Keys.Q:
+                        textBox1.Text += @"sqrt(";
+                        break;
+                    case Keys.L:
+                        textBox1.Text += @"ln(";
+                        break;
+                    case Keys.H:
+                        button19_Click(sender, e);
+                        break;
+                    case Keys.Back:
+                        button17_Click(sender, e);
+                        break;
+                    case Keys.Tab:
+                        button16_Click(sender, e);
+                        break;
+                    case Keys.Escape:
+                        Close();
+                        break;
+                    case Keys.Subtract:
+                        textBox1.Text += "-";
+                        break;
                 }
             }
 
-            if (Control.ModifierKeys == Keys.Shift && e.KeyCode == Keys.D8)
+            switch (ModifierKeys)
             {
-                textBox1.Text += "*";
-            }
+                case Keys.Shift:
+                    switch (e.KeyCode)
+                    {
+                        case Keys.D8:
+                            textBox1.Text += @"*";
+                            break;
+                        case Keys.D6:
+                            textBox1.Text += @"^";
+                            break;
+                        case Keys.D5:
+                            textBox1.Text += @"%";
+                            break;
+                        case Keys.D9:
+                            textBox1.Text += @"(";
+                            break;
+                        case Keys.D0:
+                            textBox1.Text += @")";
+                            break;
+                    }
 
-            if (Control.ModifierKeys == Keys.Shift && e.KeyCode == Keys.D6)
-            {
-                textBox1.Text += "^";
-            }
-
-            if (Control.ModifierKeys == Keys.Shift && e.KeyCode == Keys.D5)
-            {
-                textBox1.Text += "%";
-            }
-
-            if (Control.ModifierKeys == Keys.Shift && e.KeyCode == Keys.D9)
-            {
-                textBox1.Text += "(";
-            }
-
-            if (Control.ModifierKeys == Keys.Shift && e.KeyCode == Keys.D0)
-            {
-                textBox1.Text += ")";
-            }
-
-            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.C)
-            {
-                Clipboard.SetText(clpbrd);
-            }
-
-            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.V)
-            {
-                textBox1.Text += Clipboard.GetText();
-            }
-
-//            if (Control.ModifierKeys == Keys.Shift && e.KeyCode == Keys.Divide)
-//            {
-//                textBox1.Text += "/";
-//            }
-
-            if (e.KeyCode == Keys.Back)
-            {
-                button17_Click(sender, e);
-            }
-
-            if (e.KeyCode == Keys.Tab)
-            {
-                button16_Click(sender, e);
-            }
-
-            if (e.KeyCode == Keys.Escape)
-            {
-                Close();
-            }
-
-            if (e.KeyCode == Keys.Subtract)
-            {
-                textBox1.Text += "-";
+                    break;
+                case Keys.Control:
+                    switch (e.KeyCode)
+                    {
+                        case Keys.C:
+                            Clipboard.SetText(clpbrd);
+                            break;
+                        case Keys.V:
+                            textBox1.Text += Clipboard.GetText();
+                            break;
+                    }
+                    break;
             }
         }
 

@@ -21,8 +21,7 @@ namespace CALC1
                 string line;
                 while ((line = sr.ReadLine()) != null)
                 {
-                    textBox1.Text += line + " ";
-                    textBox1.Text += '\r';
+                    textBox1.Text += line + @" ";
                 }
 
             }
@@ -36,8 +35,7 @@ namespace CALC1
                 string line;
                 while ((line = sr.ReadLine()) != null)
                 {
-                    textBox1.Text += line + " ";
-                    textBox1.Text += '\r';
+                    textBox1.Text += line + @" ";
                 }
             }
         }
@@ -53,19 +51,17 @@ namespace CALC1
 
         private void Key(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape)
+            switch (e.KeyCode)
             {
-                Close();
-            }
-
-            if (e.KeyCode == Keys.R)
-            {
-                button1_Click(sender, e);
-            }
-
-            if (e.KeyCode == Keys.C)
-            {
-                button2_Click(sender, e);
+                case Keys.Escape:
+                    Close();
+                    break;
+                case Keys.R:
+                    button1_Click(sender, e);
+                    break;
+                case Keys.C:
+                    button2_Click(sender, e);
+                    break;
             }
         }
 
