@@ -11,6 +11,7 @@ namespace CALC
     {
         private bool extra = false;
         private bool sig = false;
+        private bool po = false;
         private bool eq = false;
         readonly Form2 his = new Form2();
         public string path = @"..\..\his.txt";
@@ -29,7 +30,8 @@ namespace CALC
             }
             else
             {
-                textBox1.Text += button1.Text;
+                if (!sig) textBox1.Text += @"(";
+                sig = true;
             }
         }
         private void button2_Click(object sender, EventArgs e)  //number 2 / )
@@ -40,7 +42,8 @@ namespace CALC
             }
             else
             {
-                textBox1.Text += button2.Text;
+                if (!sig) textBox1.Text += @")";
+                sig = true;
             }
         }
 
@@ -52,7 +55,8 @@ namespace CALC
             }
             else
             {
-                textBox1.Text += button3.Text;
+                if (!sig) textBox1.Text += @"%";
+                sig = true;
             }
         }
 
@@ -64,7 +68,7 @@ namespace CALC
             }
             else
             {
-                textBox1.Text += button4.Text + @"(";
+                if (!sig) textBox1.Text += @"sin(";
                 sig = true;
             }
         }
@@ -77,7 +81,7 @@ namespace CALC
             }
             else
             {
-                textBox1.Text += button5.Text + @"(";
+                if (!sig) textBox1.Text += @"cos(";
                 sig = true;
             }
         }
@@ -90,7 +94,7 @@ namespace CALC
             }
             else
             {
-                textBox1.Text += button6.Text + @"(";
+                if (!sig) textBox1.Text += @"tan(";
                 sig = true;
             }
         }
@@ -103,7 +107,8 @@ namespace CALC
             }
             else
             {
-                textBox1.Text += button7.Text;
+                if (!sig) textBox1.Text += @"!";
+                sig = true;
             }
         }
 
@@ -115,7 +120,8 @@ namespace CALC
             }
             else
             {
-                textBox1.Text += button8.Text;
+                if (!sig) textBox1.Text += @"^";
+                sig = true;
             }
         }
 
@@ -127,7 +133,7 @@ namespace CALC
             }
             else
             {
-                textBox1.Text += button9.Text + @"(";
+                if (!sig) textBox1.Text += @"sqrt(";
                 sig = true;
             }
         }
@@ -140,7 +146,7 @@ namespace CALC
             }
             else
             {
-                textBox1.Text += button10.Text + @"(";
+                if (!sig) textBox1.Text += @"ln(";
                 sig = true;
             }
         }
@@ -170,7 +176,16 @@ namespace CALC
         }
         private void button11_Click(object sender, EventArgs e) // , / e
         {
-            textBox1.Text += button11.Text;
+            if (!extra)
+            {
+                if (!po) textBox1.Text += @",";
+                po = true;
+            }
+            else
+            {
+                textBox1.Text += @"e";
+            }
+            
         }
 
         private void button18_Click(object sender, EventArgs e)
@@ -214,6 +229,7 @@ namespace CALC
             textBox1.ResetText();
             sig = false;
             eq = false;
+            po = false;
         }
 
         private void button16_Click(object sender, EventArgs e)
@@ -504,25 +520,31 @@ namespace CALC
                         textBox1.Text += @"0";
                         break;
                     case Keys.C:
-                        textBox1.Text += @"cos(";
+                        extra = true;
+                        button5_Click(sender, e);
                         break;
                     case Keys.S:
-                        textBox1.Text += @"sin(";
+                        extra = true;
+                        button4_Click(sender, e);
                         break;
                     case Keys.T:
-                        textBox1.Text += @"tan(";
+                        extra = true;
+                        button6_Click(sender, e);
                         break;
                     case Keys.Q:
-                        textBox1.Text += @"sqrt(";
+                        extra = true;
+                        button9_Click(sender, e);
                         break;
                     case Keys.L:
-                        textBox1.Text += @"ln(";
+                        extra = true;
+                        button10_Click(sender, e);
                         break;
                     case Keys.H:
                         button19_Click(sender, e);
                         break;
                     case Keys.E:
-                        textBox1.Text += @"e";
+                        extra = true;
+                        button11_Click(sender, e);
                         break;
                     case Keys.X:
                         button18_Click(sender, e);
@@ -536,11 +558,9 @@ namespace CALC
                     case Keys.Escape:
                         Close();
                         break;
-                    case Keys.Subtract:
-                        textBox1.Text += @"-";
-                        break;
                     case Keys.M:
-                        textBox1.Text += @",";
+                        extra = false;
+                        button11_Click(sender, e);
                         break;
                 }
             }
@@ -552,29 +572,37 @@ namespace CALC
                 case Keys.Shift:
                     switch (e.KeyCode)
                     {
+                        case Keys.D1:
+                            extra = true;
+                            button7_Click(sender, e);
+                            break;
                         case Keys.D8:
-                            textBox1.Text += @"*";
+                            button14_Click(sender, e);
                             break;
                         case Keys.D6:
-                            textBox1.Text += @"^";
+                            extra = true;
+                            button8_Click(sender, e);
                             break;
                         case Keys.D5:
-                            textBox1.Text += @"%";
+                            extra = true;
+                            button3_Click(sender, e);
                             break;
                         case Keys.D9:
-                            textBox1.Text += @"(";
+                            extra = true;
+                            button1_Click(sender, e);
                             break;
                         case Keys.D0:
-                            textBox1.Text += @")";
+                            extra = true;
+                            button2_Click(sender, e);
                             break;
                         case Keys.A:
-                            textBox1.Text += @"+";
+                            button12_Click(sender, e);
                             break;
                         case Keys.S:
-                            textBox1.Text += @"-";
+                            button13_Click(sender, e);
                             break;
                         case Keys.D:
-                            textBox1.Text += @"/";
+                            button15_Click(sender, e);
                             break;
                     }
 
