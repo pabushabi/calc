@@ -539,9 +539,9 @@ namespace CALC
                     case Keys.Subtract:
                         textBox1.Text += @"-";
                         break;
-                    //case Keys.:
-                      //  textBox1.Text += @",";
-                        //break;
+                    case Keys.M:
+                        textBox1.Text += @",";
+                        break;
                 }
             }
 
