@@ -24,15 +24,19 @@ Now working these functions:
 	* "%" - Shift + 5
 	* "(" - Shift + 9
 	* ")" - Shift + 0
-	* "cos" - c
-	* "sin" - s
-	* "tan" - t
-	* "ln" - l
-	* "sqrt" - q
-	* copy result to clipboard - Ctrl + c
-	* paste from clipboard - Ctrl + v
-	* calculate the result - tab
-	* erase - backspace
+	* "+" - Shift + A
+	* "-" - Shift + S
+	* "/" - Shift + D
+	* "cos" - C
+	* "sin" - S
+	* "tan" - T
+	* "ln" - L
+	* "sqrt" - Q
+	* extra - X
+	* copy result to clipboard - Ctrl + C
+	* paste from clipboard - Ctrl + V
+	* calculate the result - Tab
+	* erase - Backspace
 * history
 
 Known issues: 

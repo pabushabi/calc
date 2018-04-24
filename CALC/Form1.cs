@@ -218,28 +218,26 @@ namespace CALC
 
         private void button16_Click(object sender, EventArgs e)
         {
-            if (!eq)
-            {
-                Calculating();
-                eq = true;
-            }
+            if (eq) return;
+            Calculating();
+            eq = true;
         }
 
-        void Calculating()
+        private void Calculating()
         {
             double res = 0;
 
-            for (int i = 0; i < textBox1.TextLength; i++)
+            for (var i = 0; i < textBox1.TextLength; i++)
             {
                 //===== Binary operators
                 if (textBox1.Text[i].Equals('+') || textBox1.Text[i].Equals('-') ||
                     textBox1.Text[i].Equals('*') || textBox1.Text[i].Equals('/') ||
                     textBox1.Text[i].Equals('^'))
                 {
-                    char sign = textBox1.Text[i];
+                    var sign = textBox1.Text[i];
                     string num1 = "", num2 = "";
                     double tmp1 = 0, tmp2 = 0;
-                    for (int j = 0; j < i; j++)
+                    for (var j = 0; j < i; j++)
                     {
                         if (isNum(ref j))
                         {
@@ -253,7 +251,7 @@ namespace CALC
                     }
 
                     
-                    for (int k = i + 1; k < textBox1.TextLength; k++)
+                    for (var k = i + 1; k < textBox1.TextLength; k++)
                     {
                         if (isNum(ref k))
                         {
@@ -304,11 +302,11 @@ namespace CALC
                     break;
                 }
                 //===== Unary operators
-                if (textBox1.Text[i].Equals('!') || textBox1.Text[i].Equals('%'))
+                 else if (textBox1.Text[i].Equals('!') || textBox1.Text[i].Equals('%'))
                 {
-                    char sign = textBox1.Text[i];
-                    string num1 = "";
-                    for (int j = 0; j < i; j++)
+                    var sign = textBox1.Text[i];
+                    var num1 = "";
+                    for (var j = 0; j < i; j++)
                     {
                         if (isNum(ref j))
                         {
@@ -316,13 +314,13 @@ namespace CALC
                         }
                     }
 
-                    double num_1 = double.Parse(num1);
+                    var num_1 = double.Parse(num1);
 
                     switch (sign)
                     {
                         case '!':
                             {
-                                int num_1_ = int.Parse(num1);
+                                var num_1_ = int.Parse(num1);
                                 res = cal.fac(ref num_1_);
                                 break;
                             }
@@ -335,10 +333,10 @@ namespace CALC
                     break;
                 }
                 //===== sin
-                if (textBox1.Text[i].Equals('s') && textBox1.Text[i + 1].Equals('i') &&
+                else if (textBox1.Text[i].Equals('s') && textBox1.Text[i + 1].Equals('i') &&
                     textBox1.Text[i + 2].Equals('n') && textBox1.Text[i + 3].Equals('('))
                 {
-                    string num1 = "";
+                    var num1 = "";
                     for (int k = i + 4; !textBox1.Text[k].Equals(')'); k++)
                     {
                         if (isNum(ref k))
@@ -347,16 +345,16 @@ namespace CALC
                         }
                     }
 
-                    double num_1 = double.Parse(num1);
+                    var num_1 = double.Parse(num1);
                     res = cal.sinx(ref num_1);
                     break;
                 }
 
                 //===== cos
-                if (textBox1.Text[i].Equals('c') && textBox1.Text[i + 1].Equals('o') &&
+                else if (textBox1.Text[i].Equals('c') && textBox1.Text[i + 1].Equals('o') &&
                     textBox1.Text[i + 2].Equals('s') && textBox1.Text[i + 3].Equals('('))
                 {
-                    string num1 = "";
+                    var num1 = "";
                     for (int k = i + 4; !textBox1.Text[k].Equals(')'); k++)
                     {
                         if (isNum(ref k))
@@ -365,16 +363,16 @@ namespace CALC
                         }
                     }
 
-                    double num_1 = double.Parse(num1);
+                    var num_1 = double.Parse(num1);
                     res = cal.cosx(ref num_1);
                     break;
                 }
 
                 //===== tg
-                if (textBox1.Text[i].Equals('t') && textBox1.Text[i + 1].Equals('a') &&
+                else if (textBox1.Text[i].Equals('t') && textBox1.Text[i + 1].Equals('a') &&
                     textBox1.Text[i + 2].Equals('n') && textBox1.Text[i + 3].Equals('('))
                 {
-                    string num1 = "";
+                    var num1 = "";
                     for (int k = i + 4; !textBox1.Text[k].Equals(')'); k++)
                     {
                         if (isNum(ref k))
@@ -383,18 +381,18 @@ namespace CALC
                         }
                     }
 
-                    double num_1 = double.Parse(num1);
+                    var num_1 = double.Parse(num1);
                     res = cal.tanx(ref num_1);
                     break;
                 }
 
                 //===== sqrt
-                if (textBox1.Text[i].Equals('s') && textBox1.Text[i + 1].Equals('q') &&
+                else if (textBox1.Text[i].Equals('s') && textBox1.Text[i + 1].Equals('q') &&
                     textBox1.Text[i + 2].Equals('r') && textBox1.Text[i + 3].Equals('t') && 
                     textBox1.Text[i + 4].Equals('('))
                 {
-                    string num1 = "";
-                    for (int k = i + 5; !textBox1.Text[k].Equals(')'); k++)
+                    var num1 = "";
+                    for (var k = i + 5; !textBox1.Text[k].Equals(')'); k++)
                     {
                         if (isNum(ref k))
                         {
@@ -403,17 +401,17 @@ namespace CALC
                         
                     }
 
-                    double num_1 = double.Parse(num1);
+                    var num_1 = double.Parse(num1);
                     res = cal.sqrtu(ref num_1);
                     break;
                 }
 
                 //=====ln
-                if (textBox1.Text[i].Equals('l') && textBox1.Text[i + 1].Equals('n') &&
+                else if (textBox1.Text[i].Equals('l') && textBox1.Text[i + 1].Equals('n') &&
                     textBox1.Text[i + 2].Equals('('))
                 {
-                    string num1 = "";
-                    for (int k = i + 3; !textBox1.Text[k].Equals(')'); k++)
+                    var num1 = "";
+                    for (var k = i + 3; !textBox1.Text[k].Equals(')'); k++)
                     {
                         if (isNum(ref k))
                         {
@@ -421,25 +419,40 @@ namespace CALC
                         }
                     }
 
-                    double num_1 = double.Parse(num1);
+                    var num_1 = double.Parse(num1);
                     res = cal.ln(ref num_1);
                     break;
                 }
 
-                //=====e
-                //if (textBox1.Text[0].Equals('e'))
-                //{
-                //    res = cal.e;
-                //    break;
-                //}
+                else
+                {
+                    var num1 = "";
+                    for (var k = 0; k < textBox1.TextLength; k++)
+                    {
+                        if (isNum(ref k))
+                        {
+                            num1 += textBox1.Text[k];
+                        }
+                    }
+
+                    if (textBox1.Text[0].Equals('e'))
+                    {
+                        textBox1.Text += @"=" + Math.Round(cal.e, 4);
+                        return;
+                    }
+                    else
+                    {
+                        res = double.Parse(num1);
+                    }
+                }
 
             }
 
             res = Math.Round(res, 4);
             clpbrd = "";
             clpbrd += res;
-            textBox1.Text += "=" + res;
-            using (StreamWriter sw = new StreamWriter(path, true, System.Text.Encoding.Default))
+            textBox1.Text += @"=" + res;
+            using (var sw = new StreamWriter(path, true, System.Text.Encoding.Default))
             {
                 sw.WriteLine(textBox1.Text);
             }
@@ -454,7 +467,7 @@ namespace CALC
         {
         }
 
-        void Key(object sender, KeyEventArgs e)
+        private void Key(object sender, KeyEventArgs e)
         {
             if (!(ModifierKeys == Keys.Shift || ModifierKeys == Keys.Control))
             {
@@ -508,6 +521,12 @@ namespace CALC
                     case Keys.H:
                         button19_Click(sender, e);
                         break;
+                    case Keys.E:
+                        textBox1.Text += @"e";
+                        break;
+                    case Keys.X:
+                        button18_Click(sender, e);
+                        break;
                     case Keys.Back:
                         button17_Click(sender, e);
                         break;
@@ -518,10 +537,15 @@ namespace CALC
                         Close();
                         break;
                     case Keys.Subtract:
-                        textBox1.Text += "-";
+                        textBox1.Text += @"-";
                         break;
+                    //case Keys.:
+                      //  textBox1.Text += @",";
+                        //break;
                 }
             }
+
+            //if (e.KeyCode == Keys.KeyCode)
 
             switch (ModifierKeys)
             {
@@ -542,6 +566,15 @@ namespace CALC
                             break;
                         case Keys.D0:
                             textBox1.Text += @")";
+                            break;
+                        case Keys.A:
+                            textBox1.Text += @"+";
+                            break;
+                        case Keys.S:
+                            textBox1.Text += @"-";
+                            break;
+                        case Keys.D:
+                            textBox1.Text += @"/";
                             break;
                     }
 
@@ -568,7 +601,7 @@ namespace CALC
             }
             else if (!his.Created)
             {
-                Form2 his = new Form2();
+                var his = new Form2();
                 his.Show();
             }
         }
