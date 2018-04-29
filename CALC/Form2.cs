@@ -21,7 +21,8 @@ namespace CALC1
                 string line;
                 while ((line = sr.ReadLine()) != null)
                 {
-                    textBox1.Text += line + @" ";
+                    textBox1.Text += line + @" 
+";
                 }
 
             }
@@ -35,7 +36,8 @@ namespace CALC1
                 string line;
                 while ((line = sr.ReadLine()) != null)
                 {
-                    textBox1.Text += line + @" ";
+                    textBox1.Text += line + @" 
+";
                 }
             }
         }
@@ -44,7 +46,7 @@ namespace CALC1
         {
             using (StreamWriter s = new StreamWriter(path, false, System.Text.Encoding.Default))
             {
-                s.WriteLine("");
+                s.Write("");
             }
             textBox1.ResetText();
         }

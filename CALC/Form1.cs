@@ -13,6 +13,7 @@ namespace CALC
         private bool sig = false;
         private bool po = false;
         private bool eq = false;
+        private bool ky = true;
         readonly Form2 his = new Form2();
         public string path = @"..\..\his.txt";
         private string clpbrd = "";
@@ -30,7 +31,7 @@ namespace CALC
             }
             else
             {
-                if (!sig) textBox1.Text += @"(";
+                if (!sig || !ky) textBox1.Text += @"(";
                 sig = true;
             }
         }
@@ -42,7 +43,7 @@ namespace CALC
             }
             else
             {
-                if (!sig) textBox1.Text += @")";
+                if (true) textBox1.Text += @")";
                 sig = true;
             }
         }
@@ -55,7 +56,7 @@ namespace CALC
             }
             else
             {
-                if (!sig) textBox1.Text += @"%";
+                if (!sig || !ky) textBox1.Text += @"%";
                 sig = true;
             }
         }
@@ -68,7 +69,7 @@ namespace CALC
             }
             else
             {
-                if (!sig) textBox1.Text += @"sin(";
+                if (!sig || !ky) textBox1.Text += @"sin(";
                 sig = true;
             }
         }
@@ -81,7 +82,7 @@ namespace CALC
             }
             else
             {
-                if (!sig) textBox1.Text += @"cos(";
+                if (!sig || !ky) textBox1.Text += @"cos(";
                 sig = true;
             }
         }
@@ -94,7 +95,7 @@ namespace CALC
             }
             else
             {
-                if (!sig) textBox1.Text += @"tan(";
+                if (!sig || !ky) textBox1.Text += @"tan(";
                 sig = true;
             }
         }
@@ -107,7 +108,7 @@ namespace CALC
             }
             else
             {
-                if (!sig) textBox1.Text += @"!";
+                if (!sig || !ky) textBox1.Text += @"!";
                 sig = true;
             }
         }
@@ -120,7 +121,7 @@ namespace CALC
             }
             else
             {
-                if (!sig) textBox1.Text += @"^";
+                if (!sig || !ky) textBox1.Text += @"^";
                 sig = true;
             }
         }
@@ -133,7 +134,7 @@ namespace CALC
             }
             else
             {
-                if (!sig) textBox1.Text += @"sqrt(";
+                if (!sig || !ky) textBox1.Text += @"sqrt(";
                 sig = true;
             }
         }
@@ -146,7 +147,7 @@ namespace CALC
             }
             else
             {
-                if (!sig) textBox1.Text += @"ln(";
+                if (!sig || !ky) textBox1.Text += @"ln(";
                 sig = true;
             }
         }
@@ -520,22 +521,27 @@ namespace CALC
                         textBox1.Text += @"0";
                         break;
                     case Keys.C:
+                        ky = true;
                         extra = true;
                         button5_Click(sender, e);
                         break;
                     case Keys.S:
+                        ky = true;
                         extra = true;
                         button4_Click(sender, e);
                         break;
                     case Keys.T:
+                        ky = true;
                         extra = true;
                         button6_Click(sender, e);
                         break;
                     case Keys.Q:
+                        ky = true;
                         extra = true;
                         button9_Click(sender, e);
                         break;
                     case Keys.L:
+                        ky = true;
                         extra = true;
                         button10_Click(sender, e);
                         break;
@@ -543,6 +549,7 @@ namespace CALC
                         button19_Click(sender, e);
                         break;
                     case Keys.E:
+                        ky = true;
                         extra = true;
                         button11_Click(sender, e);
                         break;
@@ -573,6 +580,7 @@ namespace CALC
                     switch (e.KeyCode)
                     {
                         case Keys.D1:
+                            ky = true;
                             extra = true;
                             button7_Click(sender, e);
                             break;
@@ -580,18 +588,22 @@ namespace CALC
                             button14_Click(sender, e);
                             break;
                         case Keys.D6:
+                            ky = true;
                             extra = true;
                             button8_Click(sender, e);
                             break;
                         case Keys.D5:
+                            ky = true;
                             extra = true;
                             button3_Click(sender, e);
                             break;
                         case Keys.D9:
+                            ky = true;
                             extra = true;
                             button1_Click(sender, e);
                             break;
                         case Keys.D0:
+                            ky = true;
                             extra = true;
                             button2_Click(sender, e);
                             break;
