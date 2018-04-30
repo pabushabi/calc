@@ -56,7 +56,7 @@ namespace CALCULATOR
         public double tanx(ref double x)
         {
             double res;
-            x *= Math.PI / 180;
+            //x *= Math.PI / 180;
             res = Math.Tan(x);
             return res;
         }

@@ -38,11 +38,13 @@ Simple calculator on C#
 	* calculate the result - Tab
 	* erase - Backspace
 * history
+* auto closing brackets
 
 #### Known issues: 
-* history displays not in column
+* operations with e is not working
 
 #### TO DO:
 * Handling of the exceptions
+* Operations with negative numbers
 
 @pabushabi, @lKAYNONl
