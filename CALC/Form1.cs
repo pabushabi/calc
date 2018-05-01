@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Drawing;
 using System.IO;
-using System.Runtime.Remoting.Messaging;
 using System.Windows.Forms;
 using CALC1;
 using CALCULATOR;
@@ -16,7 +15,7 @@ namespace CALC
         private bool eq = false;
         private bool ky = true;
         readonly Form2 his = new Form2();
-        public string path = @"..\..\his.txt";
+        public string path = @"his.txt";
         private string clpbrd = "";
 
         readonly calculator cal = new calculator();
@@ -329,7 +328,6 @@ namespace CALC
                             }
                         case '^':
                             {
-                                //double num_2_ = double.Parse(num2);
                                 res = cal.powu(ref num_1, ref num_2);
                                 break;
                             }

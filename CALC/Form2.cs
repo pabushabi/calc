@@ -7,7 +7,7 @@ namespace CALC1
     public partial class Form2 : Form
     {
         public string history = "";
-        public string path = @"..\..\his.txt";
+        public string path = @"his.txt";
 
         public Form2()
         {
@@ -16,16 +16,26 @@ namespace CALC1
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            using (StreamReader sr = new StreamReader(path, System.Text.Encoding.Default))
+            try
             {
-                string line;
-                while ((line = sr.ReadLine()) != null)
+                using (StreamReader sr = new StreamReader(path, System.Text.Encoding.Default))
                 {
-                    textBox1.Text += line + @" 
+                    string line;
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        textBox1.Text += line + @" 
 ";
+                    }
                 }
-
             }
+            catch (System.IO.FileNotFoundException)
+            {
+                using (StreamWriter s = new StreamWriter(path, false, System.Text.Encoding.Default))
+                {
+                    s.Write("");
+                }
+            }
+
         }
 
         private void button1_Click(object sender, EventArgs e) // Reload
