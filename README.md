@@ -39,12 +39,13 @@ Simple calculator on C#
 	* erase - Backspace
 * history
 * auto closing brackets
+* handling of the exceptions
+
 
 #### Known issues: 
-* 
+none
 
 #### TO DO:
-* Handling of the exceptions
 * Operations with negative numbers
 
 @pabushabi, @lKAYNONl

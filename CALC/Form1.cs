@@ -292,9 +292,18 @@ namespace CALC
 
                     double num_1 = 0;
                     double num_2 = 0;
-                    num_1 = tmp1 != 0 ? tmp1 : double.Parse(num1);
+                    try
+                    {
+                        num_1 = tmp1 != 0 ? tmp1 : double.Parse(num1);
+                        num_2 = tmp2 != 0 ? tmp2 : double.Parse(num2);
+                    }
 
-                    num_2 = tmp2 != 0 ? tmp2 : double.Parse(num2);
+                    catch (System.FormatException)
+                    {
+                        textBox1.Text = @"                   ERR";
+                        return;
+                    }
+
 
                     switch (sign)
                     {
@@ -340,7 +349,17 @@ namespace CALC
                         }
                     }
 
-                    var num_1 = double.Parse(num1);
+                    var num_1 = 0.0;
+                    try
+                    {
+                        num_1 = double.Parse(num1);
+                    }
+
+                    catch (System.FormatException)
+                    {
+                        textBox1.Text = @"                   ERR";
+                        return;
+                    }
 
                     switch (sign)
                     {
@@ -371,7 +390,18 @@ namespace CALC
                         }
                     }
 
-                    var num_1 = double.Parse(num1);
+                    var num_1 = 0.0;
+                    try
+                    {
+                        num_1 = double.Parse(num1);
+                    }
+
+                    catch (System.FormatException)
+                    {
+                        textBox1.Text = @"                   ERR";
+                        return;
+                    }
+
                     res = cal.sinx(ref num_1);
                     break;
                 }
@@ -389,7 +419,17 @@ namespace CALC
                         }
                     }
 
-                    var num_1 = double.Parse(num1);
+                    var num_1 = 0.0;
+                    try
+                    {
+                        num_1 = double.Parse(num1);
+                    }
+
+                    catch (System.FormatException)
+                    {
+                        textBox1.Text = @"                   ERR";
+                        return;
+                    }
                     res = cal.cosx(ref num_1);
                     break;
                 }
@@ -407,7 +447,17 @@ namespace CALC
                         }
                     }
 
-                    var num_1 = double.Parse(num1);
+                    var num_1 = 0.0;
+                    try
+                    {
+                        num_1 = double.Parse(num1);
+                    }
+
+                    catch (System.FormatException)
+                    {
+                        textBox1.Text = @"                   ERR";
+                        return;
+                    }
                     res = cal.tanx(ref num_1);
                     break;
                 }
@@ -427,7 +477,17 @@ namespace CALC
                         
                     }
 
-                    var num_1 = double.Parse(num1);
+                    var num_1 = 0.0;
+                    try
+                    {
+                        num_1 = double.Parse(num1);
+                    }
+
+                    catch (System.FormatException)
+                    {
+                        textBox1.Text = @"                   ERR";
+                        return;
+                    }
                     res = cal.sqrtu(ref num_1);
                     break;
                 }
@@ -445,7 +505,17 @@ namespace CALC
                         }
                     }
 
-                    var num_1 = double.Parse(num1);
+                    var num_1 = 0.0;
+                    try
+                    {
+                        num_1 = double.Parse(num1);
+                    }
+
+                    catch (System.FormatException)
+                    {
+                        textBox1.Text = @"                   ERR";
+                        return;
+                    }
                     res = cal.ln(ref num_1);
                     break;
                 }
@@ -463,13 +533,17 @@ namespace CALC
 
                     if (!num1.Equals("")) res = double.Parse(num1);
                     if (textBox1.TextLength - 1 == 0)
-                        if (textBox1.Text[0].Equals('e')
-                        ) // && textBox1.Text[0].Equals(textBox1.Text[textBox1.TextLength - 1]))
+                        if (textBox1.Text[0].Equals('e')) 
                         {
                             textBox1.Text += @"=" + Math.Round(cal.e, 4);
                             return;
                         }
 
+                    if (textBox1.Text[0].Equals('(') || textBox1.Text[0].Equals(')'))
+                    {
+                        textBox1.Text = @"                   ERR";
+                        return;
+                    }
                 }
 
             }
