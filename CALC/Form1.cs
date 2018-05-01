@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.IO;
+using System.Runtime.Remoting.Messaging;
 using System.Windows.Forms;
 using CALC1;
 using CALCULATOR;
@@ -460,16 +461,15 @@ namespace CALC
                         }
                     }
 
-                    if (textBox1.Text[0].Equals('e'))// && textBox1.Text[0].Equals(textBox1.Text[textBox1.TextLength - 1]))
-                    {
-                        textBox1.Text += @"=" + Math.Round(cal.e, 4);
-                        return;
-                    }
-                    else
-                    {
-                        res = double.Parse(num1);
-                    }
-                    
+                    if (!num1.Equals("")) res = double.Parse(num1);
+                    if (textBox1.TextLength - 1 == 0)
+                        if (textBox1.Text[0].Equals('e')
+                        ) // && textBox1.Text[0].Equals(textBox1.Text[textBox1.TextLength - 1]))
+                        {
+                            textBox1.Text += @"=" + Math.Round(cal.e, 4);
+                            return;
+                        }
+
                 }
 
             }
@@ -533,26 +533,31 @@ namespace CALC
                         ky = true;
                         extra = true;
                         button5_Click(sender, e);
+                        extra = false;
                         break;
                     case Keys.S:
                         ky = true;
                         extra = true;
                         button4_Click(sender, e);
+                        extra = false;
                         break;
                     case Keys.T:
                         ky = true;
                         extra = true;
                         button6_Click(sender, e);
+                        extra = false;
                         break;
                     case Keys.Q:
                         ky = true;
                         extra = true;
                         button9_Click(sender, e);
+                        extra = false;
                         break;
                     case Keys.L:
                         ky = true;
                         extra = true;
                         button10_Click(sender, e);
+                        extra = false;
                         break;
                     case Keys.H:
                         button19_Click(sender, e);
@@ -561,6 +566,7 @@ namespace CALC
                         ky = true;
                         extra = true;
                         button11_Click(sender, e);
+                        extra = false;
                         break;
                     case Keys.X:
                         button18_Click(sender, e);
@@ -592,6 +598,7 @@ namespace CALC
                             ky = true;
                             extra = true;
                             button7_Click(sender, e);
+                            extra = false;
                             break;
                         case Keys.D8:
                             button14_Click(sender, e);
@@ -600,21 +607,25 @@ namespace CALC
                             ky = true;
                             extra = true;
                             button8_Click(sender, e);
+                            extra = false;
                             break;
                         case Keys.D5:
                             ky = true;
                             extra = true;
                             button3_Click(sender, e);
+                            extra = false;
                             break;
                         case Keys.D9:
                             ky = true;
                             extra = true;
                             button1_Click(sender, e);
+                            extra = false;
                             break;
                         case Keys.D0:
                             ky = true;
                             extra = true;
                             button2_Click(sender, e);
+                            extra = false;
                             break;
                         case Keys.A:
                             button12_Click(sender, e);

@@ -41,7 +41,7 @@ Simple calculator on C#
 * auto closing brackets
 
 #### Known issues: 
-* operations with e is not working
+* 
 
 #### TO DO:
 * Handling of the exceptions
