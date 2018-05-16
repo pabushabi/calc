@@ -160,8 +160,15 @@ namespace CALC
 
         private void button13_Click(object sender, EventArgs e)  //operator -
         {
-            if (!sig) textBox1.Text += @"-";
-            sig = true;
+            if (!extra)
+            {
+                textBox1.Text += @"-";
+                sig = true;
+            }
+            else
+            {
+                textBox1.Text += @"˗";
+            }
         }
 
         private void button14_Click(object sender, EventArgs e)  //operator *
@@ -206,6 +213,7 @@ namespace CALC
                 button9.Text = @"sqrt";
                 button10.Text = @"ln";
                 button11.Text = @"e";
+                button13.Text = @"±";
                 button18.BackColor = Color.Gray;
             }
             if (!extra)
@@ -221,6 +229,7 @@ namespace CALC
                 button9.Text = @"9";
                 button10.Text = @"0";
                 button11.Text = @",";
+                button13.Text = @"-"; // ˗
                 button18.BackColor = Color.DarkGray;
             }
         }
@@ -274,7 +283,6 @@ namespace CALC
                             tmp1 = cal.e;
                         }
                     }
-
                     
                     for (var k = i + 1; k < textBox1.TextLength; k++)
                     {
@@ -303,6 +311,10 @@ namespace CALC
                         return;
                     }
 
+                    if (textBox1.Text[0].Equals('˗'))
+                        num_1 = -num_1;
+                    if (textBox1.Text[i + 1].Equals('˗'))
+                        num_2 = -num_2;
 
                     switch (sign)
                     {
@@ -359,6 +371,9 @@ namespace CALC
                         return;
                     }
 
+                    if (textBox1.Text[0].Equals('˗'))
+                        num_1 = -num_1;
+
                     switch (sign)
                     {
                         case '!':
@@ -400,6 +415,9 @@ namespace CALC
                         return;
                     }
 
+                    if (textBox1.Text[4].Equals('˗'))
+                        num_1 = -num_1;
+
                     res = cal.sinx(ref num_1);
                     break;
                 }
@@ -428,6 +446,10 @@ namespace CALC
                         textBox1.Text = @"                   ERR";
                         return;
                     }
+
+                    if (textBox1.Text[4].Equals('˗'))
+                        num_1 = -num_1;
+
                     res = cal.cosx(ref num_1);
                     break;
                 }
@@ -456,6 +478,10 @@ namespace CALC
                         textBox1.Text = @"                   ERR";
                         return;
                     }
+
+                    if (textBox1.Text[4].Equals('˗'))
+                        num_1 = -num_1;
+
                     res = cal.tanx(ref num_1);
                     break;
                 }
@@ -486,6 +512,13 @@ namespace CALC
                         textBox1.Text = @"                   ERR";
                         return;
                     }
+
+                    if (textBox1.Text[5].Equals('˗'))
+                    {
+                        textBox1.Text = @"                   ERR";
+                        return;
+                    }
+
                     res = cal.sqrtu(ref num_1);
                     break;
                 }
@@ -514,6 +547,13 @@ namespace CALC
                         textBox1.Text = @"                   ERR";
                         return;
                     }
+
+                    if (textBox1.Text[4].Equals('˗'))
+                    {
+                        textBox1.Text = @"                   ERR";
+                        return;
+                    }
+
                     res = cal.ln(ref num_1);
                     break;
                 }
@@ -530,6 +570,10 @@ namespace CALC
                     }
 
                     if (!num1.Equals("")) res = double.Parse(num1);
+
+                    if (textBox1.Text[0].Equals('˗'))
+                        res = -res;
+
                     if (textBox1.TextLength - 1 == 0)
                         if (textBox1.Text[0].Equals('e')) 
                         {
