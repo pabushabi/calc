@@ -313,7 +313,7 @@ namespace CALC
 
                     if (textBox1.Text[0].Equals('˗'))
                         num_1 = -num_1;
-                    if (textBox1.Text[i + 1].Equals('˗'))
+                    if (textBox1.Text[i + 1].Equals('-'))
                         num_2 = -num_2;
 
                     switch (sign)
@@ -377,8 +377,17 @@ namespace CALC
                     switch (sign)
                     {
                         case '!':
-                            {
-                                var num_1_ = int.Parse(num1);
+                        {
+                            var num_1_ = 0;
+                                try
+                                {
+                                    num_1_ = int.Parse(num1);
+                                }
+                                catch (System.FormatException)
+                                {
+                                    textBox1.Text = @"                   ERR";
+                                    return;
+                                }
                                 res = cal.fac(ref num_1_);
                                 break;
                             }
@@ -481,6 +490,13 @@ namespace CALC
 
                     if (textBox1.Text[4].Equals('˗'))
                         num_1 = -num_1;
+
+                    for (var k = 1; k < 10; k++)
+                        if (num_1 == (2 * k - 1) * 90)
+                        {
+                            textBox1.Text = @"                   ERR";
+                            return;
+                        }
 
                     res = cal.tanx(ref num_1);
                     break;

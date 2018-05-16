@@ -40,12 +40,13 @@ Simple calculator on C#
 * history
 * auto closing brackets
 * handling of the exceptions
+* Operations with negative numbers
 
 
 #### Known issues: 
 none
 
 #### TO DO:
-* Operations with negative numbers
+none
 
 @pabushabi, @lKAYNONl
