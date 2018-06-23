@@ -14,6 +14,7 @@ namespace CALC
         private bool po = false;
         private bool eq = false;
         private bool ky = true;
+        private int num_s = 0;
         readonly Form2 his = new Form2();
         public string path = @"his.txt";
         private string clpbrd = "";
@@ -160,15 +161,10 @@ namespace CALC
 
         private void button13_Click(object sender, EventArgs e)  //operator -
         {
-            if (!extra)
-            {
-                textBox1.Text += @"-";
-                sig = true;
-            }
-            else
-            {
-                textBox1.Text += @"˗";
-            }
+            if (num_s >= 3) return;
+            textBox1.Text += @"-";
+            //sig = true;
+            num_s++;
         }
 
         private void button14_Click(object sender, EventArgs e)  //operator *
@@ -213,7 +209,7 @@ namespace CALC
                 button9.Text = @"sqrt";
                 button10.Text = @"ln";
                 button11.Text = @"e";
-                button13.Text = @"±";
+                button13.Text = @"-";
                 button18.BackColor = Color.Gray;
             }
             if (!extra)
@@ -240,6 +236,7 @@ namespace CALC
             sig = false;
             eq = false;
             po = false;
+            num_s = 0;
         }
 
         private void button16_Click(object sender, EventArgs e)
@@ -261,12 +258,14 @@ namespace CALC
                 textBox1.Text += ')';
             }
 
-            for (var i = 0; i < textBox1.TextLength; i++)
+            string subs = "";
+
+            for (var i = 1; i < textBox1.TextLength; i++)
             {
                 //===== Binary operators
-                if (textBox1.Text[i].Equals('+') || textBox1.Text[i].Equals('-') ||
-                    textBox1.Text[i].Equals('*') || textBox1.Text[i].Equals('/') ||
-                    textBox1.Text[i].Equals('^'))
+                if (textBox1.Text[i].Equals('+') || textBox1.Text[i].Equals('*') || 
+                    textBox1.Text[i].Equals('/') || textBox1.Text[i].Equals('^') ||
+                    textBox1.Text[i].Equals('-'))
                 {
                     var sign = textBox1.Text[i];
                     string num1 = "", num2 = "";
@@ -274,27 +273,19 @@ namespace CALC
                     for (var j = 0; j < i; j++)
                     {
                         if (isNum(ref j))
-                        {
                             num1 += textBox1.Text[j];
-                        }
 
                         if (textBox1.Text[j].Equals('e'))
-                        {
                             tmp1 = cal.e;
-                        }
                     }
                     
                     for (var k = i + 1; k < textBox1.TextLength; k++)
                     {
                         if (isNum(ref k))
-                        {
                             num2 += textBox1.Text[k];
-                        }
 
                         if (textBox1.Text[k].Equals('e'))
-                        {
                             tmp2 = cal.e;
-                        }
                     }
 
                     double num_1 = 0;
@@ -311,38 +302,28 @@ namespace CALC
                         return;
                     }
 
-                    if (textBox1.Text[0].Equals('˗'))
+                    if (textBox1.Text[0].Equals('-'))
                         num_1 = -num_1;
-                    if (textBox1.Text[i + 1].Equals('-'))
+                    if (textBox1.Text[i + 1].Equals('-') || textBox1.Text[i].Equals('-'))
+                    {
                         num_2 = -num_2;
+                        res = cal.add(ref num_1, ref num_2);
+                    }
 
                     switch (sign)
                     {
                         case '+':
-                            {
                                 res = cal.add(ref num_1, ref num_2);
                                 break;
-                            }
-                        case '-':
-                            {
-                                res = cal.sub(ref num_1, ref num_2);
-                                break;
-                            }
                         case '*':
-                            {
                                 res = cal.mul(ref num_1, ref num_2);
                                 break;
-                            }
                         case '/':
-                            {
                                 res = cal.div(ref num_1, ref num_2);
                                 break;
-                            }
                         case '^':
-                            {
                                 res = cal.powu(ref num_1, ref num_2);
                                 break;
-                            }
                     }
                     break;
                 }
@@ -400,8 +381,8 @@ namespace CALC
                     break;
                 }
                 //===== sin
-                if (textBox1.Text[i].Equals('s') && textBox1.Text[i + 1].Equals('i') &&
-                    textBox1.Text[i + 2].Equals('n') && textBox1.Text[i + 3].Equals('('))
+                if (textBox1.Text[i - 1].Equals('s') && textBox1.Text[i].Equals('i') &&
+                    textBox1.Text[i + 1].Equals('n') && textBox1.Text[i + 2].Equals('('))
                 {
                     var num1 = "";
                     for (int k = i + 4; !textBox1.Text[k].Equals(')'); k++)
@@ -432,8 +413,8 @@ namespace CALC
                 }
 
                 //===== cos
-                if (textBox1.Text[i].Equals('c') && textBox1.Text[i + 1].Equals('o') &&
-                    textBox1.Text[i + 2].Equals('s') && textBox1.Text[i + 3].Equals('('))
+                if (textBox1.Text[i - 1].Equals('c') && textBox1.Text[i].Equals('o') &&
+                    textBox1.Text[i + 1].Equals('s') && textBox1.Text[i + 2].Equals('('))
                 {
                     var num1 = "";
                     for (int k = i + 4; !textBox1.Text[k].Equals(')'); k++)
@@ -464,8 +445,8 @@ namespace CALC
                 }
 
                 //===== tg
-                if (textBox1.Text[i].Equals('t') && textBox1.Text[i + 1].Equals('a') &&
-                    textBox1.Text[i + 2].Equals('n') && textBox1.Text[i + 3].Equals('('))
+                if (textBox1.Text[i - 1].Equals('t') && textBox1.Text[i].Equals('a') &&
+                    textBox1.Text[i + 1].Equals('n') && textBox1.Text[i + 2].Equals('('))
                 {
                     var num1 = "";
                     for (int k = i + 4; !textBox1.Text[k].Equals(')'); k++)
@@ -503,9 +484,9 @@ namespace CALC
                 }
 
                 //===== sqrt
-                if (textBox1.Text[i].Equals('s') && textBox1.Text[i + 1].Equals('q') &&
-                    textBox1.Text[i + 2].Equals('r') && textBox1.Text[i + 3].Equals('t') && 
-                    textBox1.Text[i + 4].Equals('('))
+                if (textBox1.Text[i - 1].Equals('s') && textBox1.Text[i].Equals('q') &&
+                    textBox1.Text[i + 1].Equals('r') && textBox1.Text[i + 2].Equals('t') && 
+                    textBox1.Text[i + 3].Equals('('))
                 {
                     var num1 = "";
                     for (var k = i + 5; !textBox1.Text[k].Equals(')'); k++)
@@ -540,8 +521,8 @@ namespace CALC
                 }
 
                 //=====ln
-                if (textBox1.Text[i].Equals('l') && textBox1.Text[i + 1].Equals('n') &&
-                    textBox1.Text[i + 2].Equals('('))
+                if (textBox1.Text[i - 1].Equals('l') && textBox1.Text[i].Equals('n') &&
+                    textBox1.Text[i + 1].Equals('('))
                 {
                     var num1 = "";
                     for (var k = i + 3; !textBox1.Text[k].Equals(')'); k++)
@@ -574,7 +555,7 @@ namespace CALC
                     break;
                 }
 
-                else 
+                if (i == textBox1.TextLength - 1)
                 {
                     var num1 = "";
                     for (var k = 0; k < textBox1.TextLength; k++)
