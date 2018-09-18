@@ -258,8 +258,6 @@ namespace CALC
                 textBox1.Text += ')';
             }
 
-            string subs = "";
-
             for (var i = 1; i < textBox1.TextLength; i++)
             {
                 //===== Binary operators
