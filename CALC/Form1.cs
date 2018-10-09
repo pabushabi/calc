@@ -383,7 +383,7 @@ namespace CALC
                     textBox1.Text[i + 1].Equals('n') && textBox1.Text[i + 2].Equals('('))
                 {
                     var num1 = "";
-                    for (int k = i + 4; !textBox1.Text[k].Equals(')'); k++)
+                    for (int k = i + 3; !textBox1.Text[k].Equals(')'); k++)
                     {
                         if (isNum(ref k))
                         {
@@ -415,7 +415,7 @@ namespace CALC
                     textBox1.Text[i + 1].Equals('s') && textBox1.Text[i + 2].Equals('('))
                 {
                     var num1 = "";
-                    for (int k = i + 4; !textBox1.Text[k].Equals(')'); k++)
+                    for (int k = i + 3; !textBox1.Text[k].Equals(')'); k++)
                     {
                         if (isNum(ref k))
                         {
@@ -447,7 +447,7 @@ namespace CALC
                     textBox1.Text[i + 1].Equals('n') && textBox1.Text[i + 2].Equals('('))
                 {
                     var num1 = "";
-                    for (int k = i + 4; !textBox1.Text[k].Equals(')'); k++)
+                    for (int k = i + 3; !textBox1.Text[k].Equals(')'); k++)
                     {
                         if (isNum(ref k))
                         {
@@ -487,7 +487,7 @@ namespace CALC
                     textBox1.Text[i + 3].Equals('('))
                 {
                     var num1 = "";
-                    for (var k = i + 5; !textBox1.Text[k].Equals(')'); k++)
+                    for (var k = i + 4; !textBox1.Text[k].Equals(')'); k++)
                     {
                         if (isNum(ref k))
                         {
